@@ -226,6 +226,7 @@
                 <h3>53<sup style="font-size: 20px">%</sup></h3>
 
                 <p> Balanço Semanal </p>
+
               </div>
               <div class="icon">
                 <i class="far fa-chart-bar"></i>
@@ -275,7 +276,8 @@
           <section class="col-lg-7 connectedSortable">
 
 
-
+            <input type="file" accept="image/*" capture="camera" />
+            
             <!-- TO DO List -->
             <div class="card">
               <div class="card-header">
