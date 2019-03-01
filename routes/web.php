@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layout.app');
+    return view('home');
 });
+
+Route::get('/produtos', 'ProdutoController@index')->name('produtos.index');
