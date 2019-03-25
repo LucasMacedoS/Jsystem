@@ -10,6 +10,8 @@
 <div class="card">
   <div class="card-body">
 
+    <a href="{{route('produtos.novo')}}" class="btn btn-info">Novo produto</a>
+
     <table class="table" id="table">
       <thead>
         <th> #ID </th>
@@ -23,25 +25,22 @@
       <tbody>
         @forelse($produtos as $produto)
           <tr>
-            <td>  </td>
-            <td>  </td>
-            <td>  </td>
-            <td>  </td>
-            <td>  </td>
-            <td>  </td>
-            <td>  </td>
+            <td>{{$produto->id}}</td>
+            <td>{{$produto->nomeProd}}</td>
+            <td>{{$produto->nomeGrp}}</td>
+            <td>{{$produto->nomeCat}}</td>
+            <td>{{$produto->manipulado}}</td>
+            <td>{{$produto->estoque}}</td>
+            <td>R$ {{$produto->valor_unitario}}</td>
+
+            <td>
+              <a href="/produtos/editar/{{ $produto->id }}"><i class="fas fa-cog"></i></a>
+              <b>|</b>
+              <a href="/produtos/deletar/{{ $produto->id }}"><i class="far fa-trash-alt"></i></a>
+            </td>
           </tr>
         @empty
         @endforelse
-        <tr>
-          <td> 1 </td>
-          <td> Skol </td>
-          <td> Cerveja </td>
-          <td> Latas </td>
-          <td> Não </td>
-          <td> 100 </td>
-          <td> R$ 3,50 </td>
-        </tr>
       </tbody>
     </table>
 
