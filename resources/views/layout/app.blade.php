@@ -133,7 +133,7 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item active">
-        <a class="nav-link" href=""> <i class="fas fa-sign-in-alt"></i> Login </a>
+        <a class="nav-link" href="/usuario"> <i class="fas fa-sign-in-alt"></i> Login </a>
       </li>
 
     </ul>
@@ -166,6 +166,18 @@
             <a href="#" class="nav-link">
               <i class="fas fa-receipt"></i>
               <p> Comanda </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('grupos.index') }}" class="nav-link">
+              <i class="fas fa-box"></i>
+              <p> Grupos </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('categorias.index') }}" class="nav-link">
+              <i class="fas fa-boxes"></i>
+              <p> Categorias </p>
             </a>
           </li>
           <li class="nav-item">
