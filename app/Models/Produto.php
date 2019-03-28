@@ -7,10 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Produto extends Model
 {
 
-    protected $table = 'PRODUTOS';
-
     protected $fillable = [
-      'NOME', 'CATEGORIA', 'GRUPO', 'MANIPULADO', 'ESTOQUE',
-      'VALOR_UNITARIO'
+      'nome', 'categoria', 'grupo', 'manipulado', 'estoque',
+      'valor_unitario'
     ];
 }

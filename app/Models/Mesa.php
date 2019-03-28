@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Mesa extends Model
 {
     protected $fillable = [
-      'ID_MESA', 'ID_CLIENTE', 'STATUS'
-    ]
+      'id_mesa', 'id_cliente', 'status'
+    ];
 }

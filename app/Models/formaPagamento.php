@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class formaPagamento extends Model
 {
     protected $fillable = [
-      'FORMA_PAGAMENTO',
-    ]
+      'forma_pagamento',
+    ];
 }
