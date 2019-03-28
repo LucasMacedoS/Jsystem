@@ -24,9 +24,9 @@ Route::prefix('grupos')->group(function (){
     Route::get('/', 'GruposController@index')->name('grupos.index');
     Route::get('/novo', 'GruposController@novo')->name('grupos.novo');
     Route::post('/salvar', 'GruposController@salvar')->name('grupos.salvar');
-    Route::get('/editar/{id}', 'GruposController@editar');
-    Route::post('/{id}', 'GruposController@atualizar');
-    Route::get('/deletar/{id}', 'GruposController@deletar');
+    Route::get('/editar/{id}', 'GruposController@editar')->name('grupos.editar');
+    Route::post('/{id}', 'GruposController@atualizar')->name('grupos.atualizar');
+    Route::get('/deletar/{id}', 'GruposController@deletar')->name('grupos.deletar');
 });
 
 
@@ -36,9 +36,9 @@ Route::prefix('categorias')->group(function (){
     Route::get('/', 'CategoriasController@index')->name('categorias.index');
     Route::get('/novo', 'CategoriasController@novo')->name('categorias.novo');
     Route::post('/salvar', 'CategoriasController@salvar')->name('categorias.salvar');
-    Route::get('/editar/{id}', 'CategoriasController@editar');
-    Route::post('/{id}', 'CategoriasController@atualizar');
-    Route::get('/deletar/{id}', 'CategoriasController@deletar');
+    Route::get('/editar/{id}', 'CategoriasController@editar')->name('categorias.editar');
+    Route::post('/{id}', 'CategoriasController@atualizar')->name('categorias.atualizar');
+    Route::get('/deletar/{id}', 'CategoriasController@deletar')->name('categorias.deletar');
 });
 
 

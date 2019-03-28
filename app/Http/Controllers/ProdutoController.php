@@ -32,8 +32,8 @@ class ProdutoController extends Controller
         $grupos = Grupo::all();
         $categorias = Categoria::all();
         return view('produtos.novo')
-            ->with($categorias, 'categorias')
-            ->with($grupos, 'grupos');
+            ->with('categorias', $categorias)
+            ->with('grupos', $grupos);
     }
 
 
@@ -62,9 +62,9 @@ class ProdutoController extends Controller
         $grupos = Grupo::all();
 
         return view('produto.editar')
-            ->with($produto, 'produto')
-            ->with($categorias, 'categorias')
-            ->with($grupos, 'grupos');
+            ->with('produto', $produto)
+            ->with('categorias', $categorias)
+            ->with('grupos', $grupos);
 
     }
 

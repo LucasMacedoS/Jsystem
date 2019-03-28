@@ -47,8 +47,15 @@
 
 
   <!-- Scripts -->
+
   <!-- jQuery -->
   <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
+
+  <!-- jQuery Mask-->
+  <script src="{{ asset('js/jquery.mask.js') }}"></script>
+
+  <!-- jQuery Mask Money-->
+  <script src="{{ asset('js/jquery.maskMoney.js') }}"></script>
 
   <!-- jQuery UI 1.11.4 -->
   <script src="{{ asset('https://code.jquery.com/ui/1.12.1/jquery-ui.min.js') }}"></script>
