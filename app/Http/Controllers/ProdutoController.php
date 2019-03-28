@@ -1,116 +1,95 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Produto;
-use App\Categoria;
-use App\Grupo;
-use DB;
+use App\Models\Produto;
+use App\Models\Categoria;
+use App\Models\Grupo;
+
 class ProdutoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // ============================
+    // INICIO CRUD
+    // ============================
+
+
+    // Retorna todos os produtos cadastrados
     public function index()
     {
-        $produtos = DB::select('select a.id, a.nome nomeProd, c.nome nomeGrp, b.nome nomeCat,
-                                a.manipulado, a.estoque, a.valor_unitario
-                                from produtos a, categorias b, grupos c 
-                                where a.categoria_id = b.id and a.grupo_id = c.id
-                                order by a.id');
-        return view('produtos.index')->with('produtos', $produtos);
+
+        $produtos = Produto::all();
+
+        return view('produtos.index')
+            ->with('produtos', $produtos);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+
+    // Retorna o fomulário de cadastro de produtos
+    public function novo()
     {
-        $grps = Grupo::all();
-        $cats = Categoria::all();
-        return view('produtos.new', compact('grps', 'cats'));
+        $grupos = Grupo::all();
+        $categorias = Categoria::all();
+        return view('produtos.novo')
+            ->with($categorias, 'categorias')
+            ->with($grupos, 'grupos');
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+
+    // Salva no banco de dados um produto cadastrado
+    public function salvar(Request $request)
     {
-        $prod = new Produto();
-        $prod->nome = $request->get('Nome_produto');
-        $prod->categoria_id = $request->get('Categoria_produto');
-        $prod->grupo_id = $request->get('Grupo_produto');
-        $prod->manipulado = $request->get('Manipulado_produto');
-        $prod->estoque = $request->get('Quantidade_produto');
-        $prod->valor_unitario = $request->get('Preço_produto');
-        $prod->save();
-        return redirect('/produtos');
+        $produto = new Produto;
+        $produto->fill($request->all());
+        $produto->save();
+
+        return redirect()->back();
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function show($id)
     {
         //
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+
+    // Retorna o formulário de edição de produto
+    public function editar($id)
     {
-        $prod = Produto::find($id);
-        $cats = Categoria::all();
-        $grps = Grupo::all();
-        if(isset($prod)){
-            return view('produtos.edit', compact('prod', 'cats', 'grps'));
-        }else{
-            return redirect('/produtos');
-        }
-        return redirect('/produtos');
+        $produto = Produto::find($id);
+        $categorias = Categoria::all();
+        $grupos = Grupo::all();
+
+        return view('produto.editar')
+            ->with($produto, 'produto')
+            ->with($categorias, 'categorias')
+            ->with($grupos, 'grupos');
+
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+
+    // Atualiza o cadastro de um produto no banco de dados
+    public function atualizar(Request $request, $id)
     {
-        $prod = Produto::find($id);
-        if (isset($prod)){
-            $prod->nome = $request->get('Nome_produto');
-            $prod->categoria_id = $request->get('Categoria_produto');
-            $prod->grupo_id = $request->get('Grupo_produto');
-            $prod->manipulado = $request->get('Manipulado_produto');
-            $prod->estoque = $request->get('Quantidade_produto');
-            $prod->valor_unitario = $request->get('Preço_produto');
-            $prod->save();
-        }
-        return redirect('/produtos');
+        $produto = Produto::find($id);
+        $produto->fill($request->all());
+        $produto->save();
+        return redirect()->back();
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+
+    //Deleta um produto do bando de dados
+    public function deletar($id)
     {
-        $prod = Produto::find($id);
-        if(isset($prod)){
-            $prod->delete();
-        }
-        return redirect('/produtos');
+        $produto = Produto::find($id);
+        $produto->delete();
+
+        return redirect()->back();
     }
+
+
+    // ============================
+    // FIM CRUD
+    // ============================
 }

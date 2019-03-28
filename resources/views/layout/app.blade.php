@@ -133,7 +133,7 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item active">
-        <a class="nav-link" href="/usuario"> <i class="fas fa-sign-in-alt"></i> Login </a>
+        <a class="nav-link" href="#"> <i class="fas fa-sign-in-alt"></i> Login </a>
       </li>
 
     </ul>
@@ -146,7 +146,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link bg-danger">
+    <a href="{{ route('home') }}" class="brand-link bg-danger">
       <img src="{{ asset('img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-light"> JSystem </span>
     </a>

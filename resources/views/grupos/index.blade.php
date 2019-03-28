@@ -22,7 +22,7 @@
           <tr>
             <td>{{$grupo->id}}</td>
             <td>{{$grupo->nome}}</td>
-            
+
             <td>
               <a href="/grupos/editar/{{ $grupo->id }}"><i class="fas fa-cog"></i></a>
               <b>|</b>

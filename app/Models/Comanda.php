@@ -8,5 +8,5 @@ class Comanda extends Model
 {
     protected $fillable = [
       'ID_COMANDA', 'ID_CLIENTE', 'STATUS',
-    ]
+    ];
 }
