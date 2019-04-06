@@ -26,9 +26,9 @@
         @forelse($produtos as $produto)
           <tr>
             <td>{{$produto->id}}</td>
-            <td>{{$produto->nomeProd}}</td>
-            <td>{{$produto->nomeGrp}}</td>
-            <td>{{$produto->nomeCat}}</td>
+            <td>{{$produto->nome}}</td>
+            <td>{{$produto->categoria->nome}}</td>
+            <td>{{$produto->grupo->nome}}</td>
             <td>{{$produto->manipulado}}</td>
             <td>{{$produto->estoque}}</td>
             <td>R$ {{$produto->valor_unitario}}</td>

@@ -12,7 +12,7 @@
 
     <a href="{{route('categorias.novo')}}" class="btn btn-info">Nova categoria</a>
 
-    <table class="table" id="table">
+    <table class="table" id="myTable">
       <thead>
         <th> #ID </th>
         <th> Categoria  </th>
@@ -22,8 +22,8 @@
         @forelse($categorias as $categoria)
           <tr>
             <td>{{$categoria->id}}</td>
-            <td>{{$categoria->nomeCat}}</td>
-            <td>{{$categoria->nomeGrp}}</td>
+            <td>{{$categoria->nome}}</td>
+            <td>{{$categoria->grupo->nome}}</td>
             
             <td>
               <a href="/categorias/editar/{{ $categoria->id }}"><i class="fas fa-cog"></i></a>

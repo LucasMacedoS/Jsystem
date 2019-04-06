@@ -11,4 +11,16 @@ class Produto extends Model
       'nome', 'categoria', 'grupo', 'manipulado', 'estoque',
       'valor_unitario'
     ];
+
+
+        public function grupo(){
+
+            return $this->hasOne('App\Models\Grupo', 'id', 'grupo_id');
+
+        }
+
+    public function categoria(){
+
+        return $this->hasOne('App\Models\Categoria', 'id', 'categoria_id');
+    }
 }

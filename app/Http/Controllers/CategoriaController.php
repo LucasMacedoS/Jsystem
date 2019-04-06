@@ -7,7 +7,7 @@ use App\Models\Categoria;
 use App\Models\Grupo;
 
 
-class CategoriasController extends Controller
+class CategoriaController extends Controller
 {
 
     // ============================

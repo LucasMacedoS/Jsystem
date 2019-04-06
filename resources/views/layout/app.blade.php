@@ -12,6 +12,14 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Sweet Alert 2 -->
+  <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+  <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css')}}">
+  <script src="{{ asset('//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')}}" charset="utf-8"></script>
+
   <!-- Styles -->
   <!-- Font Awesome -->
   <!-- <link rel="stylesheet" href="{{ asset('theme/plugins/font-awesome/css/font-awesome.min.css') }}"> -->
@@ -49,7 +57,8 @@
   <!-- Scripts -->
 
   <!-- jQuery -->
-  <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
+{{--  <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>--}}
 
   <!-- jQuery Mask-->
   <script src="{{ asset('js/jquery.mask.js') }}"></script>
@@ -76,8 +85,8 @@
   <script src="{{ asset('theme/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
   <script src="{{ asset('theme/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 
-  <!-- jQuery Knob Chart -->
-  <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script>
+{{--  <!-- jQuery Knob Chart -->--}}
+{{--  <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script>--}}
 
   <!-- daterangepicker -->
   <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js') }}"></script>

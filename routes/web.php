@@ -33,12 +33,12 @@ Route::prefix('grupos')->group(function (){
 
 //Categorias
 Route::prefix('categorias')->group(function (){
-    Route::get('/', 'CategoriasController@index')->name('categorias.index');
-    Route::get('/novo', 'CategoriasController@novo')->name('categorias.novo');
-    Route::post('/salvar', 'CategoriasController@salvar')->name('categorias.salvar');
-    Route::get('/editar/{id}', 'CategoriasController@editar')->name('categorias.editar');
-    Route::post('/{id}', 'CategoriasController@atualizar')->name('categorias.atualizar');
-    Route::get('/deletar/{id}', 'CategoriasController@deletar')->name('categorias.deletar');
+    Route::get('/', 'CategoriaController@index')->name('categorias.index');
+    Route::get('/novo', 'CategoriaController@novo')->name('categorias.novo');
+    Route::post('/salvar', 'CategoriaController@salvar')->name('categorias.salvar');
+    Route::get('/editar/{id}', 'CategoriaController@editar')->name('categorias.editar');
+    Route::post('/{id}', 'CategoriaController@atualizar')->name('categorias.atualizar');
+    Route::get('/deletar/{id}', 'CategoriaController@deletar')->name('categorias.deletar');
 });
 
 

@@ -7,12 +7,13 @@
 @section('content')
 
 
+
 <div class="card">
   <div class="card-body">
 
     <a href="{{route('grupos.novo')}}" class="btn btn-info">Novo grupo</a>
 
-    <table class="table" id="table">
+    <table class="table" id="myTable">
       <thead>
         <th> #ID </th>
         <th> Nome  </th>
