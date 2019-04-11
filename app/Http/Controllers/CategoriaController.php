@@ -42,7 +42,7 @@ class CategoriaController extends Controller
         $categoria->fill($request->all());
         $categoria->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Categoria salva com sucesso!');
     }
 
 
@@ -60,29 +60,29 @@ class CategoriaController extends Controller
         $grupos = Grupo::all();
 
         return view('categorias.editar')
-            ->with('categorias', $categoria)
+            ->with('categoria', $categoria)
             ->with('grupos', $grupos);
     }
 
 
     // Atualiza um cadastro de categoria no banco de dados
-    public function update(Request $request, $id)
+    public function atualizar(Request $request, $id)
     {
         $categoria = Categoria::find($id);
         $categoria->fill($request->all());
         $categoria->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Categoria atualizada com sucesso!');
     }
 
 
     // Deleta uma categoria do banco de dados
-    public function destroy($id)
+    public function deletar($id)
     {
         $categoria = Categoria::find($id);
         $categoria->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('seccess', 'Categoria deletada com sucesso!');
     }
 
     // ============================

@@ -21,12 +21,12 @@ Route::get('/', function () {
 
 //Grupos
 Route::prefix('grupos')->group(function (){
-    Route::get('/', 'GruposController@index')->name('grupos.index');
-    Route::get('/novo', 'GruposController@novo')->name('grupos.novo');
-    Route::post('/salvar', 'GruposController@salvar')->name('grupos.salvar');
-    Route::get('/editar/{id}', 'GruposController@editar')->name('grupos.editar');
-    Route::post('/{id}', 'GruposController@atualizar')->name('grupos.atualizar');
-    Route::get('/deletar/{id}', 'GruposController@deletar')->name('grupos.deletar');
+    Route::get('/', 'GrupoController@index')->name('grupos.index');
+    Route::get('/novo', 'GrupoController@novo')->name('grupos.novo');
+    Route::post('/salvar', 'GrupoController@salvar')->name('grupos.salvar');
+    Route::get('/editar/{id}', 'GrupoController@editar')->name('grupos.editar');
+    Route::post('/{id}', 'GrupoController@atualizar')->name('grupos.atualizar');
+    Route::get('/deletar/{id}', 'GrupoController@deletar')->name('grupos.deletar');
 });
 
 

@@ -44,7 +44,7 @@ class ProdutoController extends Controller
         $produto->fill($request->all());
         $produto->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Produto salvo com sucesso!');
     }
 
 
@@ -61,7 +61,7 @@ class ProdutoController extends Controller
         $categorias = Categoria::all();
         $grupos = Grupo::all();
 
-        return view('produto.editar')
+        return view('produtos.editar')
             ->with('produto', $produto)
             ->with('categorias', $categorias)
             ->with('grupos', $grupos);
@@ -75,7 +75,7 @@ class ProdutoController extends Controller
         $produto = Produto::find($id);
         $produto->fill($request->all());
         $produto->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Produto atualizado com sucesso!');
     }
 
 

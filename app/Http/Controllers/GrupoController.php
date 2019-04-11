@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Grupo;
 
-class GruposController extends Controller
+class GrupoController extends Controller
 {
 
     // ============================
@@ -37,7 +37,7 @@ class GruposController extends Controller
         $grupo->fill($request->all());
         $grupo->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Grupo salvo com sucesso!');
     }
 
 
@@ -68,7 +68,7 @@ class GruposController extends Controller
             $grp->nome = $request->input('Nome_grupo');
             $grp->save();
         }
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Grupo atualizado com sucesso!');
     }
 
 

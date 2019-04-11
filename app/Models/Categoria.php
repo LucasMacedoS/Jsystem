@@ -4,7 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
 
-
+    public $fillable = ['nome', 'grupo_id',
+    ];
 
     public function grupo(){
 

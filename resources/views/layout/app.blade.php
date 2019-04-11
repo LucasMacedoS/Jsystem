@@ -226,6 +226,10 @@
     </div>
 
 
+  @include('alerts.success_toast')
+  @include('alerts.success')
+    @include('alerts.error')
+
     <!-- Main content -->
     <section class="content">
 

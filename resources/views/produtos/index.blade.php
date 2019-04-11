@@ -7,6 +7,61 @@
 @section('content')
 
 
+    <script>
+
+            function deletar(id) {
+
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-success',
+                        cancelButton: 'btn btn-danger'
+                    },
+                    buttonsStyling: false,
+                })
+
+                swalWithBootstrapButtons.fire({
+                    title: 'Tem certeza?',
+                    text: "Você não podera reverter isso!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sim, deletar!',
+                    cancelButtonText: 'Não, cancelar!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.value) {
+                        swalWithBootstrapButtons.fire(
+                            'Deletado!',
+                            'O produto foi deletado.',
+                            'success'
+                        );
+
+                        $(document).ready(function () {
+
+                        $.ajax({
+                            type: "DELETE",
+                            url: "",
+                            data: id,
+                            success: function(msg){
+                                alert("Data Deleted: " + msg);
+                            }
+                        });
+
+                        });
+                    } else if (
+                        // Read more about handling dismissals
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire(
+                            'Cancelado',
+                            'Seu produto esta seguro :)',
+                            'error'
+                        )
+                    }
+                });
+            }
+
+    </script>
+
 <div class="card">
   <div class="card-body">
 
@@ -34,11 +89,12 @@
             <td>R$ {{$produto->valor_unitario}}</td>
 
             <td>
-              <a href="/produtos/editar/{{ $produto->id }}"><i class="fas fa-cog"></i></a>
-              <b>|</b>
-              <a href="/produtos/deletar/{{ $produto->id }}"><i class="far fa-trash-alt"></i></a>
+              <a href="{{ route('produtos.editar', $produto->id) }}"><i class="fas fa-cog" style="color: black;"></i></a>
+              |
+              <a href="#" onclick="(deletar({{$produto->id}}))"><i class="far fa-trash-alt" style="color: black;"></i></a>
             </td>
           </tr>
+
         @empty
         @endforelse
       </tbody>

@@ -26,9 +26,9 @@
             <td>{{$categoria->grupo->nome}}</td>
             
             <td>
-              <a href="/categorias/editar/{{ $categoria->id }}"><i class="fas fa-cog"></i></a>
-              <b>|</b>
-              <a href="/categorias/deletar/{{ $categoria->id }}"><i class="far fa-trash-alt"></i></a>
+              <a href="{{ route('categorias.editar', $categoria->id) }}"><i class="fas fa-cog"  style="color:black"></i></a>
+              |
+              <a href=""><i class="far fa-trash-alt" style="color:black"></i></a>
             </td>
           </tr>
         @empty

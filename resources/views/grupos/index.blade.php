@@ -11,7 +11,7 @@
 <div class="card">
   <div class="card-body">
 
-    <a href="{{route('grupos.novo')}}" class="btn btn-info">Novo grupo</a>
+    <a href="{{route('grupos.novo')}}" class="btn btn-info"> Novo grupo </a>
 
     <table class="table" id="myTable">
       <thead>
@@ -25,9 +25,9 @@
             <td>{{$grupo->nome}}</td>
 
             <td>
-              <a href="/grupos/editar/{{ $grupo->id }}"><i class="fas fa-cog"></i></a>
-              <b>|</b>
-              <a href="/grupos/deletar/{{ $grupo->id }}"><i class="far fa-trash-alt"></i></a>
+              <a href="{{ route('grupos.editar', $grupo->id) }}"><i class="fas fa-cog" style="color: black;"></i></a>
+              |
+              <a href=""><i class="far fa-trash-alt" style="color: black;"></i></a>
             </td>
           </tr>
         @empty

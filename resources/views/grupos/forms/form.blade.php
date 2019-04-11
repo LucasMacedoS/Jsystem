@@ -5,7 +5,7 @@
 
     <div class="form-group col-md-6 ">
         <label> Nome do grupo </label>
-        <input type="text" name="nome" class="form-control" value="">
+        <input type="text" name="nome" class="form-control" value="{{  }}">
     </div>
 
 </div>
