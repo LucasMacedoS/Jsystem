@@ -194,14 +194,14 @@ var Layout = function ($) {
     CONTENT_HEADER: '.content-header',
     WRAPPER: '.wrapper',
     CONTROL_SIDEBAR: '.control-sidebar',
-    LAYOUT_FIXED: '.layout-fixed',
+    LAYOUT_FIXED: '.layouts-fixed',
     FOOTER: '.main-footer'
   };
 
   var ClassName = {
     HOLD: 'hold-transition',
     SIDEBAR: 'main-sidebar',
-    LAYOUT_FIXED: 'layout-fixed'
+    LAYOUT_FIXED: 'layouts-fixed'
 
     /**
      * Class Definition
@@ -241,7 +241,7 @@ var Layout = function ($) {
       // Enable transitions
       $('body').removeClass(ClassName.HOLD);
 
-      // Activate layout height watcher
+      // Activate layouts height watcher
       this.fixLayoutHeight();
       $(Selector.SIDEBAR).on('collapsed.lte.treeview expanded.lte.treeview collapsed.lte.pushmenu expanded.lte.pushmenu', function () {
         _this.fixLayoutHeight();

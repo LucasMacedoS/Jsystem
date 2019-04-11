@@ -149,7 +149,7 @@
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item active">
-        <a class="nav-link" href="#"> <i class="fas fa-sign-in-alt"></i> Login </a>
+        <a class="nav-link" href="{{ route('login') }}"> <i class="fas fa-sign-in-alt"></i> Login </a>
       </li>
 
     </ul>

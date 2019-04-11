@@ -19,6 +19,11 @@ Route::get('/', function () {
 })->name('home');
 
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/login', 'UsuarioController@novo')->name('login');
 //Grupos
 Route::prefix('grupos')->group(function (){
     Route::get('/', 'GruposController@index')->name('grupos.index');

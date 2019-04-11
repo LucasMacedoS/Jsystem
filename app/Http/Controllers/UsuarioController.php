@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UsuarioController extends Controller
 {
@@ -18,18 +19,29 @@ class UsuarioController extends Controller
         //
     }
 
+    // Retorna todos os usuários cadastrados
+    public function login()
+    {
+        //
+    }
+
 
     // Retorna o formulário de cadastro de usuário
     public function novo()
     {
-        //
+        return view('auth.login');
     }
 
 
     // Salva no banco de dados um usuário cadastrado
     public function salvar(Request $request)
     {
-        //
+        //Colocar validações
+        $usuario = new User;
+        $usuario->fill($request->all());
+        $usuario->save();
+
+        return redirect()->route('home')->with('success_toast', 'Usuário Logado!');
     }
 
 
