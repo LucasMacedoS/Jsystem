@@ -7,7 +7,7 @@
 @section('content')
 
 
-<form method="POST" action="{{ route('produtos.atualizar', $produto->id) }}">
+<form method="POST" action="{{ route('produtos.atualizar', $produto->id) }}" id='form'>
 
   @include('produtos.forms.form')
 

@@ -7,7 +7,7 @@
 @section('content')
 
 
-<form method="POST" action="{{ route('produtos.salvar') }}">
+<form method="POST" action="{{ route('produtos.salvar') }}" id='form'>
 
   @include('produtos.forms.form')
 

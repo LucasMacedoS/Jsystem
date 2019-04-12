@@ -174,7 +174,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
+    
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -184,7 +184,7 @@
           <li class="nav-header"> Menu </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('comandas.index') }}" class="nav-link">
               <i class="fas fa-receipt"></i>
               <p> Comanda </p>
             </a>

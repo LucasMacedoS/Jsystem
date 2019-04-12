@@ -39,7 +39,9 @@ class ProdutoController extends Controller
 
     // Salva no banco de dados um produto cadastrado
     public function salvar(Request $request)
-    {
+    {   
+        // dd($request);
+
         $produto = new Produto;
         $produto->fill($request->all());
         $produto->save();

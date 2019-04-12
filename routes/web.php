@@ -11,18 +11,20 @@
 |
 */
 
-Use App\Produto;
+//Rotas de autenticação
+Auth::routes();
 
 //Home
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
+//Rota Coringa
+// Route::get('/login', function () {
+//     return view('auth.login');
+// });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
+//Rotas de Login Registro
 Route::get('/login', 'UsuarioController@login')->name('login');
 Route::post('/login/validar', 'UsuarioController@entrar')->name('login.entrar');
 Route::get('/registro', 'UsuarioController@novo')->name('registro.novo');
@@ -66,14 +68,14 @@ Route::prefix('produtos')->group(function (){
 Route::get('/comandas', 'ComandaController@index')->name('comandas.index');
 
 
-//Usuario
+//Usuario Relatório
 Route::get('/usuario', 'UsuarioController@index')->name('usuarios.index');
 
 
 
 
 
-// rotas em JSON
+//Rotas em JSON (API Mobile)
 Route::get('products', function() {
     return Produto::all();
 });
