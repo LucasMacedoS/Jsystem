@@ -818,7 +818,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 					$(that.dom.scroller).scrollTop( that.s.dt.oLoadedState.iScroller );
 					that.s.redrawTop = that.s.dt.oLoadedState.iScroller - (heights.viewport/2);
 
-					// In order to prevent layout thrashing we need another
+					// In order to prevent layouts thrashing we need another
 					// small delay
 					setTimeout( function () {
 						that.s.ingnoreScroll = false;

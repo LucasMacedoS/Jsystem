@@ -318,7 +318,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 	 *      } );
 	 *      var fc = new $.fn.dataTable.fixedColumns( table );
 	 *
-	 *      // Resize the table container and then have FixedColumns adjust its layout....
+	 *      // Resize the table container and then have FixedColumns adjust its layouts....
 	 *      $('#content').width( 1200 );
 	 *      fc.fnRedrawLayout();
 	 */
@@ -462,7 +462,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 		this.dom.grid.dt = $(this.s.dt.nTable).parents('div.'+classes.sScrollWrapper)[0];
 		this.dom.scroller = $('div.'+classes.sScrollBody, this.dom.grid.dt )[0];
 
-		/* Set up the DOM that we want for the fixed column layout grid */
+		/* Set up the DOM that we want for the fixed column layouts grid */
 		this._fnColCalc();
 		this._fnGridSetup();
 
@@ -578,7 +578,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 
 
 	/**
-	 * Calculate the column widths for the grid layout
+	 * Calculate the column widths for the grid layouts
 	 *  @returns {void}
 	 *  @private
 	 */
@@ -640,7 +640,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 
 
 	/**
-	 * Set up the DOM for the fixed column. The way the layout works is to create a 1x3 grid
+	 * Set up the DOM for the fixed column. The way the layouts works is to create a 1x3 grid
 	 * for the left column, the DataTable (for which we just reuse the scrolling element DataTable
 	 * puts into the DOM) and the right column. In each of he two fixed column elements there is a
 	 * grouping wrapper element and then a head, body and footer wrapper. In each of these we then
@@ -733,7 +733,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 
 
 	/**
-	 * Style and position the grid used for the FixedColumns layout
+	 * Style and position the grid used for the FixedColumns layouts
 	 *  @returns {void}
 	 *  @private
 	 */
@@ -917,9 +917,9 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 
 
 	/**
-	 * Make a copy of the layout object for a header or footer element from DataTables. Note that
-	 * this method will clone the nodes in the layout object.
-	 *  @returns {Array} Copy of the layout array
+	 * Make a copy of the layouts object for a header or footer element from DataTables. Note that
+	 * this method will clone the nodes in the layouts object.
+	 *  @returns {Array} Copy of the layouts array
 	 *  @param   {Object} aoOriginal Layout array from DataTables (aoHeader or aoFooter)
 	 *  @param   {Object} aiColumns Columns to copy
 	 *  @private
@@ -1001,7 +1001,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 			oClone.header.style.width = "100%";
 			oGrid.head.appendChild( oClone.header );
 
-			/* Copy the DataTables layout cache for the header for our floating column */
+			/* Copy the DataTables layouts cache for the header for our floating column */
 			aoCloneLayout = this._fnCopyLayout( dt.aoHeader, aiColumns );
 			jqCloneThead = $('>thead', oClone.header);
 			jqCloneThead.empty();
@@ -1021,7 +1021,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 		{
 			/* To ensure that we copy cell classes exactly, regardless of colspan, multiple rows
 			 * etc, we make a copy of the header from the DataTable again, but don't insert the
-			 * cloned cells, just copy the classes across. To get the matching layout for the
+			 * cloned cells, just copy the classes across. To get the matching layouts for the
 			 * fixed component, we use the DataTables _fnDetectHeader method, allowing 1:1 mapping
 			 */
 			aoCloneLayout = this._fnCopyLayout( dt.aoHeader, aiColumns );
