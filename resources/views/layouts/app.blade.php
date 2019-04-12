@@ -152,9 +152,9 @@
         <li class="nav-item active">
           <a class="nav-link" href="{{ route('login') }}"> <i class="fas fa-sign-in-alt"></i> Login </a>
         </li>
-      @else
+      @elseif(Auth::check())
         <li class="nav-item active">
-          <a class="nav-link" href=""> <i class="fas fa-sign-in-alt"></i> {{Auth::user()->nome}} </a>
+          <a class="nav-link" href=""> <i class="fas fa-sign-out-alt"></i> {{Auth::user()->nome}} </a>
         </li>
       @endif
     </ul>

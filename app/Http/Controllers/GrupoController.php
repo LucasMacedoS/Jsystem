@@ -75,10 +75,8 @@ class GrupoController extends Controller
     //Deleta um grupo do banco de dados
     public function destroy($id)
     {
-        $grp = Grupo::find($id);
-        if(isset($grp)){
-            $grp->delete();
-        }
+        $grupo = Grupo::find($id);
+        dd($grupo);
         return redirect()->back();
     }
 

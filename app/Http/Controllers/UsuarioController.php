@@ -31,19 +31,20 @@ class UsuarioController extends Controller
     // Retorna todos os usuários cadastrados
     public function entrar(Request $request)
     {
-      $user = User::where('email', $request->email)->first();
+        
+      $usuario = User::where('email', $request->email)->first();
 
-      // dd($user);
+      // dd($usuario);
 
-      if(($user != null) && (Hash::check($request->password, $user->password))){
+      if(($usuario != null) && (Hash::check($request->password, $usuario->password))){
 
 
-          Auth::loginUsingId($user->id);
+          Auth::loginUsingId($usuario->id);
 
           return redirect()->route('home')->with('success_toast', 'Usuário logado!');
       }
 
-      return redirect()->back()->with('error', 'Deu ruim em alguma coisa!');
+      return redirect()->back()->with('error', 'Usuário ou senha incorreta!');
 
     }
 
@@ -63,6 +64,8 @@ class UsuarioController extends Controller
         $usuario->fill($request->all());
         $usuario->password = hash::make($request->password);
         $usuario->save();
+
+        Auth::loginUsingId($usuario->id);
 
         return redirect()->route('home')->with('success_toast', 'Usuário Cadastrado e Logado!');
     }
