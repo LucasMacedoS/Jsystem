@@ -24,7 +24,7 @@
             <td>{{$categoria->id}}</td>
             <td>{{$categoria->nome}}</td>
             <td>{{$categoria->grupo->nome}}</td>
-            
+
             <td>
               <a href="{{ route('categorias.editar', $categoria->id) }}"><i class="fas fa-cog"  style="color:black"></i></a>
               |
@@ -32,6 +32,11 @@
             </td>
           </tr>
         @empty
+        <div class="container text-center">
+          <div class="text-danger">
+            Nenhuma categoria cadastrada.
+          </div>
+        </div>
         @endforelse
       </tbody>
     </table>

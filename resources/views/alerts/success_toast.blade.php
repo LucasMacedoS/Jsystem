@@ -10,7 +10,7 @@
 
         Toast.fire({
             type: 'success',
-            title: '{{session('success')}}'
+            title: '{{session('success_toast')}}'
         });
     </script>
 

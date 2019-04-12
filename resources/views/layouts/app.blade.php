@@ -148,10 +148,15 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
 
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ route('login') }}"> <i class="fas fa-sign-in-alt"></i> Login </a>
-      </li>
-
+      @if(Auth::guest())
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ route('login') }}"> <i class="fas fa-sign-in-alt"></i> Login </a>
+        </li>
+      @else
+        <li class="nav-item active">
+          <a class="nav-link" href=""> <i class="fas fa-sign-in-alt"></i> {{Auth::user()->nome}} </a>
+        </li>
+      @endif
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -226,8 +231,8 @@
     </div>
 
 
-  @include('alerts.success_toast')
-  @include('alerts.success')
+    @include('alerts.success_toast')
+    @include('alerts.success')
     @include('alerts.error')
 
     <!-- Main content -->

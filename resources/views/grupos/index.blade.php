@@ -31,6 +31,11 @@
             </td>
           </tr>
         @empty
+        <div class="container text-center">
+          <div class="text-danger">
+            Nenhum grupo cadastrado.
+          </div>
+        </div>
         @endforelse
       </tbody>
     </table>

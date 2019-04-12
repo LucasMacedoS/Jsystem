@@ -24,11 +24,13 @@
 
 
 <body class="hold-transition login-page bg-danger-gradient" >
-<div class="login-box">
+
+    @include('alerts.success_toast')
+    @include('alerts.success')
+    @include('alerts.error')
 
     @yield('content')
 
-</div>
 <!-- /.login-box -->
 
 <!-- jQuery -->

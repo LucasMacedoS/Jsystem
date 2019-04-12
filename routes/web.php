@@ -23,7 +23,11 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/login', 'UsuarioController@novo')->name('login');
+Route::get('/login', 'UsuarioController@login')->name('login');
+Route::post('/login/validar', 'UsuarioController@entrar')->name('login.entrar');
+Route::get('/registro', 'UsuarioController@novo')->name('registro.novo');
+Route::post('/registro/salvar', 'UsuarioController@salvar')->name('registro.salvar');
+
 //Grupos
 Route::prefix('grupos')->group(function (){
     Route::get('/', 'GrupoController@index')->name('grupos.index');

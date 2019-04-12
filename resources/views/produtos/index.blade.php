@@ -96,6 +96,11 @@
           </tr>
 
         @empty
+        <div class="container text-center">
+          <div class="text-danger">
+            Nenhum produto cadastrado.
+          </div>
+        </div>
         @endforelse
       </tbody>
     </table>
