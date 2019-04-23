@@ -26,9 +26,9 @@
             <td>{{$categoria->grupo->nome}}</td>
 
             <td>
-              <a href="{{ route('categorias.editar', $categoria->id) }}"><i class="fas fa-cog"  style="color:black"></i></a>
+              <a href="{{ route('categorias.editar', $categoria->id) }}" class='btn btn-light'><i class="fas fa-cog text-dark"></i></a>
               |
-              <a href=""><i class="far fa-trash-alt" style="color:black"></i></a>
+              <a href="" class='btn btn-light'><i class="far fa-trash-alt text-dark"></i></a>
             </td>
           </tr>
         @empty

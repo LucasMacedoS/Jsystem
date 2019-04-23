@@ -7,58 +7,6 @@
 @section('content')
 
 
-<script>
-
-  $(document).ready(function() {
-    
-    $('#botao_deletar').click(function(){
-
-      alert('bateu');
-
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false,
-      })
-
-      swalWithBootstrapButtons.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.value) {
-          swalWithBootstrapButtons.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-          $('#form_deletar').submit();
-        } else if (
-          // Read more about handling dismissals
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your imaginary file is safe :)',
-            'error'
-          )
-        }
-      });
-
-    });
-  
-
-  });
-
-
-</script>
-
 
 <div class="card">
   <div class="card-body">
@@ -72,14 +20,64 @@
       </thead>
       <tbody>
         @forelse($grupos as $grupo)
+
+        <script>
+
+          $(document).ready(function() {
+            
+            $('#botao_deletar_{{$grupo->id}}').click(function(){
+
+              // alert('bateu');
+
+              const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                  confirmButton: 'btn btn-success',
+                  cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false,
+              })
+
+              swalWithBootstrapButtons.fire({
+                title: 'Tem certeza?',
+                text: "Todas as categorias vinculadas a esse grupo serão apagadas!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, deletar!',
+                cancelButtonText: 'Não, cancelar!',
+                reverseButtons: true
+              }).then((result) => {
+                if (result.value) {
+                  swalWithBootstrapButtons.fire(
+                    'Deletado!',
+                    'Grupo deletado.',
+                    'success'
+                  )
+                  $('#form_deletar').submit();
+                } else if (
+                  // Read more about handling dismissals
+                  result.dismiss === Swal.DismissReason.cancel
+                ) {
+                  swalWithBootstrapButtons.fire(
+                    'Cancelado',
+                    'Seu grupo está salvo :)',
+                    'error'
+                  )
+                }
+              });
+            });
+          });
+
+
+        </script>
+
           <tr>
             <td>{{$grupo->id}}</td>
             <td>{{$grupo->nome}}</td>
 
             <td>
-              <a href="{{ route('grupos.editar', $grupo->id) }}"><i class="fas fa-cog text-dark"></i></a>
+              <a href="{{ route('grupos.editar', $grupo->id) }}" class='btn btn-light'><i class="fas fa-cog text-dark"></i></a>
               |
-              <button class='btn bg-light' id='botao_deletar'><i class="far fa-trash-alt text-dark"></i></button>
+              <button class='btn bg-light' id='botao_deletar_{{$grupo->id}}'><i class="far fa-trash-alt text-dark"></i></button>
             </td>
           </tr>
           

@@ -89,9 +89,9 @@
             <td>R$ {{$produto->valor_unitario}}</td>
 
             <td>
-              <a href="{{ route('produtos.editar', $produto->id) }}"><i class="fas fa-cog" style="color: black;"></i></a>
+              <a href="{{ route('produtos.editar', $produto->id) }}" class='btn btn-light'><i class="fas fa-cog text-dark"></i></a>
               |
-              <a href="#" onclick="(deletar({{$produto->id}}))"><i class="far fa-trash-alt" style="color: black;"></i></a>
+              <a href="#" onclick="(deletar({{$produto->id}}))" class='btn btn-light'><i class="far fa-trash-alt text-dark"></i></a>
             </td>
           </tr>
 

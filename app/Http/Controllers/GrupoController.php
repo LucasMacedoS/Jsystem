@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Grupo;
+use App\Models\Categoria;
 
 class GrupoController extends Controller
 {
@@ -50,24 +51,23 @@ class GrupoController extends Controller
     // Retorna o formulário de edição de grupo
     public function editar($id)
     {
-        $grp = Grupo::find($id);
-        if(isset($grp)){
-            return view('grupos.edit', compact('grp'));
-        }else{
-            return redirect('/grupos');
-        }
-        return view('grupos.editar');
+        $grupo = Grupo::find($id);
+        $categoria = Categoria::where('grupo_id', $grupo->id)->first();
+
+        return view('grupos.editar')
+            ->with('grupo', $grupo);
     }
 
 
     // Atualiza o cadastro de um grupo no banco de dados
     public function atualizar(Request $request, $id)
-    {
-        $grp = Grupo::find($id);
-        if(isset($grp)){
-            $grp->nome = $request->input('Nome_grupo');
-            $grp->save();
-        }
+    {   
+        // dd($request);
+        $grupo = Grupo::find($id);
+        // dd($grupo);
+        $grupo->fill($request->all());
+        $grupo->save();
+
         return redirect()->back()->with('success', 'Grupo atualizado com sucesso!');
     }
 
