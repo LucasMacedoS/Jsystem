@@ -50,35 +50,35 @@ class GrupoController extends Controller
     // Retorna o formulário de edição de grupo
     public function editar($id)
     {
-        $grp = Grupo::find($id);
-        if(isset($grp)){
-            return view('grupos.edit', compact('grp'));
-        }else{
-            return redirect('/grupos');
-        }
-        return view('grupos.editar');
+        // $grupo = Grupo::find($id);
+        // if(isset($grupo)){
+        //     return view('grupos.edit', compact('grp'));
+        // }else{
+        //     return redirect('/grupos');
+        // }
+        // return view('grupos.editar');
     }
 
 
     // Atualiza o cadastro de um grupo no banco de dados
     public function atualizar(Request $request, $id)
     {
-        $grp = Grupo::find($id);
-        if(isset($grp)){
-            $grp->nome = $request->input('Nome_grupo');
-            $grp->save();
-        }
+        // dd($request);
+        $grupo = Grupo::find($id);
+        $grupo->fill($request->all());
+        $grupo->save();
+
         return redirect()->back()->with('success', 'Grupo atualizado com sucesso!');
     }
 
 
     //Deleta um grupo do banco de dados
-    public function deletar($id)
+    public function excluir($id)
     {
         $grupo = Grupo::find($id);
         $grupo->delete();
         // dd($grupo);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Grupo excluido com sucesso!');
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Comanda;
 use Hash;
 use Auth;
 
@@ -31,7 +32,7 @@ class UsuarioController extends Controller
     // Retorna todos os usuários cadastrados
     public function entrar(Request $request)
     {
-        
+
       $usuario = User::where('email', $request->email)->first();
 
       // dd($usuario);
@@ -100,5 +101,15 @@ class UsuarioController extends Controller
     // ============================
     // FIM CRUD
     // ============================
+
+    public function home ()
+    {
+
+      $funcionarios = User::where('perfil', 'usuario')->where('status', 1)->count();
+      $comandas = Comanda::where('status', 'ATIVO')->count();
+      return view('home')
+        ->with('funcionarios', $funcionarios)
+        ->with('comandas', $comandas);
+    }
 
 }

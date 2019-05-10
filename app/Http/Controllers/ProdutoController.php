@@ -20,8 +20,12 @@ class ProdutoController extends Controller
     {
 
         $produtos = Produto::all();
+        $categorias = Categoria::all();
+        $grupos = Grupo::all();
 
         return view('produtos.index')
+            ->with('categorias', $categorias)
+            ->with('grupos', $grupos)
             ->with('produtos', $produtos);
     }
 
@@ -39,7 +43,7 @@ class ProdutoController extends Controller
 
     // Salva no banco de dados um produto cadastrado
     public function salvar(Request $request)
-    {   
+    {
         // dd($request);
 
         $produto = new Produto;
@@ -59,15 +63,14 @@ class ProdutoController extends Controller
     // Retorna o formulário de edição de produto
     public function editar($id)
     {
-        $produto = Produto::find($id);
-        $categorias = Categoria::all();
-        $grupos = Grupo::all();
-
-        return view('produtos.editar')
-            ->with('produto', $produto)
-            ->with('categorias', $categorias)
-            ->with('grupos', $grupos);
-
+        // $produto = Produto::find($id);
+        // $categorias = Categoria::all();
+        // $grupos = Grupo::all();
+        //
+        // return view('produtos.editar')
+        //     ->with('produto', $produto)
+        //     ->with('categorias', $categorias)
+        //     ->with('grupos', $grupos);
     }
 
 
@@ -82,12 +85,12 @@ class ProdutoController extends Controller
 
 
     //Deleta um produto do bando de dados
-    public function deletar($id)
+    public function excluir($id)
     {
         $produto = Produto::find($id);
         $produto->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Produto excluido com sucesso!');
     }
 
 

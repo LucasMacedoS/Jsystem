@@ -15,9 +15,10 @@
 Auth::routes();
 
 //Home
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', 'UsuarioController@home')->name('home');
+// Route::get('/', function () {
+//     return view('home');
+// })->name('home');
 
 //Rota Coringa
 // Route::get('/login', function () {
@@ -37,7 +38,7 @@ Route::prefix('grupos')->group(function (){
     Route::post('/salvar', 'GrupoController@salvar')->name('grupos.salvar');
     Route::get('/editar/{id}', 'GrupoController@editar')->name('grupos.editar');
     Route::post('/{id}', 'GrupoController@atualizar')->name('grupos.atualizar');
-    Route::get('/deletar/{id}', 'GrupoController@deletar')->name('grupos.deletar');
+    Route::post('/excluir/{id}', 'GrupoController@excluir')->name('grupos.excluir');
 });
 
 
@@ -49,7 +50,7 @@ Route::prefix('categorias')->group(function (){
     Route::post('/salvar', 'CategoriaController@salvar')->name('categorias.salvar');
     Route::get('/editar/{id}', 'CategoriaController@editar')->name('categorias.editar');
     Route::post('/{id}', 'CategoriaController@atualizar')->name('categorias.atualizar');
-    Route::get('/deletar/{id}', 'CategoriaController@deletar')->name('categorias.deletar');
+    Route::post('/excluir/{id}', 'CategoriaController@excluir')->name('categorias.excluir');
 });
 
 
@@ -60,7 +61,13 @@ Route::prefix('produtos')->group(function (){
     Route::post('/salvar', 'ProdutoController@salvar')->name('produtos.salvar');
     Route::get('/editar/{id}', 'ProdutoController@editar')->name('produtos.editar');
     Route::post('/{id}', 'ProdutoController@atualizar')->name('produtos.atualizar');
-    Route::get('/deletar/{id}', 'ProdutoController@deletar')->name('produtos.deletar');
+    Route::post('/excluir/{id}', 'ProdutoController@excluir')->name('produtos.excluir');
+});
+
+//Relatórios
+Route::prefix('relatorios')->group(function (){
+    Route::get('/', 'RelatorioController@index')->name('relatorios.index');
+    Route::get('/funcionarios', 'RelatorioController@funcionarios')->name('relatorios.funcionarios');
 });
 
 

@@ -11,14 +11,14 @@
       <!-- small box -->
       <div class="small-box bg-info">
         <div class="inner">
-          <h3>15</h3>
+          <h3> {{ $comandas }}</h3>
 
           <p> Comandas ativas </p>
         </div>
         <div class="icon">
           <i class="fas fa-receipt"></i>
         </div>
-        <a href="#" class="small-box-footer"> Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{ route('comandas.index') }}" class="small-box-footer"> Mais informações <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -34,7 +34,7 @@
         <div class="icon">
           <i class="far fa-chart-bar"></i>
         </div>
-        <a href="#" class="small-box-footer"> Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{ route('relatorios.funcionarios') }}" class="small-box-footer"> Mais informações <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -42,7 +42,7 @@
       <!-- small box -->
       <div class="small-box bg-warning">
         <div class="inner">
-          <h3>44</h3>
+          <h3>{{ $funcionarios }}</h3>
 
           <p> Funcionários </p>
         </div>

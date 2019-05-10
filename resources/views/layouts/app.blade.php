@@ -8,6 +8,9 @@
   <!-- Título -->
   <title> @yield('title') </title>
 
+  <!-- jQuery -->
+  <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
+
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +19,8 @@
   <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
   <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
 
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css')}}">
-  <script src="{{ asset('//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')}}" charset="utf-8"></script>
-
   <!-- Styles -->
+
   <!-- Font Awesome -->
   <!-- <link rel="stylesheet" href="{{ asset('theme/plugins/font-awesome/css/font-awesome.min.css') }}"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -55,10 +55,11 @@
 
 
   <!-- Scripts -->
+<!-- <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script> -->
 
-  <!-- jQuery -->
-  <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
-{{--  <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>--}}
+  <!-- DataTables -->
+  <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
+  <script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
 
   <!-- jQuery Mask-->
   <script src="{{ asset('js/jquery.mask.js') }}"></script>
@@ -154,7 +155,7 @@
         </li>
       @elseif(Auth::check())
         <li class="nav-item active">
-          <a class="nav-link" href=""> <i class="fas fa-sign-out-alt"></i> {{Auth::user()->nome}} </a>
+          <a class="nav-link" href="#sair" data-toggle="modal"> <i class="fas fa-sign-out-alt"></i> {{Auth::user()->nome}} </a>
         </li>
       @endif
     </ul>
@@ -174,7 +175,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-    
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -183,30 +184,125 @@
 
           <li class="nav-header"> Menu </li>
 
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fas fa-cog"></i>
+              <p>
+                Parâmetros do sistema
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('comandas.index') }}" class="nav-link">
+                  <i class="fas fa-receipt"></i>
+                  <p> Comanda </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('grupos.index') }}" class="nav-link">
+                  <i class="fas fa-box"></i>
+                  <p> Grupos </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('categorias.index') }}" class="nav-link">
+                  <i class="fas fa-boxes"></i>
+                  <p> Categorias </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('produtos.index') }}" class="nav-link">
+                  <i class="fas fa-tag"></i>
+                  <p> Produtos </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-header"> Caixa </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fas fa-dollar-sign"></i>
+              <p>
+                Pagamentos
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartjs.html" class="nav-link">
+                  <i class="fas fa-scroll"></i>
+                  <p> Comanda </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/charts/flot.html" class="nav-link">
+                  <i class="fas fa-chair"></i>
+                  <p> Mesa </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/charts/inline.html" class="nav-link">
+                  <i class="fas fa-beer"></i>
+                  <p> Balcão </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fas fa-cash-register"></i>
+              <p>
+                Sangria
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartjs.html" class="nav-link">
+                  <i class="fas fa-key"></i>
+                  <p> Abrir Caixa </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/charts/flot.html" class="nav-link">
+                  <i class="fas fa-angle-double-up"></i>
+                  <p> Suplemento </p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+          @if(Auth::user()->perfil == 'administrador')
+            <li class="nav-header"> Relatórios </li>
+
+            <li class="nav-item">
+              <a href="{{ route('relatorios.funcionarios') }}" class="nav-link">
+                <i class="fas fa-users"></i>
+                <p> Funcionários </p>
+              </a>
+            </li>
+          @endif
+
+          <li class="nav-header"> Conta </li>
+
           <li class="nav-item">
-            <a href="{{ route('comandas.index') }}" class="nav-link">
-              <i class="fas fa-receipt"></i>
-              <p> Comanda </p>
+            <a href="#" class="nav-link">
+              <i class="fas fa-user"></i>
+              <p> Perfil </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('grupos.index') }}" class="nav-link">
-              <i class="fas fa-box"></i>
-              <p> Grupos </p>
+            <a href="#sair" data-toggle="modal" class="nav-link">
+              <i class="fas fa-power-off"></i>
+              <p> Sair </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('categorias.index') }}" class="nav-link">
-              <i class="fas fa-boxes"></i>
-              <p> Categorias </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('produtos.index') }}" class="nav-link">
-              <i class="fas fa-tag"></i>
-              <p> Produtos </p>
-            </a>
-          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -220,7 +316,9 @@
   <div class="content-wrapper">
 
     <!-- Header (Page header) -->
-    <div class="content-header">
+
+    <!--  SUBSTITUIDO POR BREADCRUMB -->
+    <!-- <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -228,7 +326,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
     @include('alerts.success_toast')
@@ -238,6 +336,7 @@
     <!-- Main content -->
     <section class="content">
 
+      <h5> {{ Breadcrumbs::render() }} </h5>
 
       @yield('content')
 
@@ -278,6 +377,27 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
+<!-- Modal Sair -->
+<div class="modal fade" id="sair" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Deseja realmente sair? </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('logout') }}" method="post">
+        {{ csrf_field() }}
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+        <button type="submit" class="btn btn-primary"> Sair </button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

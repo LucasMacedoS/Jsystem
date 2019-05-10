@@ -7,65 +7,89 @@
 @section('content')
 
 
-    <script>
+<script>
 
-            function deletar(id) {
+$(document).ready(function(){
 
-                const swalWithBootstrapButtons = Swal.mixin({
-                    customClass: {
-                        confirmButton: 'btn btn-success',
-                        cancelButton: 'btn btn-danger'
-                    },
-                    buttonsStyling: false,
-                })
+  $('#table').DataTable({
+    "language": {
+      "search": "Filtrar:",
+      "show": "teste",
+      "zeroRecords": "Nenhum registro encontrado",
+      "lengthMenu":    "Mostrar _MENU_ Registros por pagina",
+      "info": "Mostrando página _PAGE_ de _PAGES_",
+      "infoFiltered": " - filtrado de _MAX_ registros",
+      "paginate": {
+        'first': "Inicio",
+        'last': "Fim",
+        'next': "Próxima",
+        'previous': "Anterior",
+      }
+    }
+  });
 
-                swalWithBootstrapButtons.fire({
-                    title: 'Tem certeza?',
-                    text: "Você não podera reverter isso!",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Sim, deletar!',
-                    cancelButtonText: 'Não, cancelar!',
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.value) {
-                        swalWithBootstrapButtons.fire(
-                            'Deletado!',
-                            'O produto foi deletado.',
-                            'success'
-                        );
+});
 
-                        $(document).ready(function () {
+// function deletar(id) {
+//
+//   const swalWithBootstrapButtons = Swal.mixin({
+//     customClass: {
+//       confirmButton: 'btn btn-success',
+//       cancelButton: 'btn btn-danger'
+//     },
+//     buttonsStyling: false,
+//   })
+//
+//   swalWithBootstrapButtons.fire({
+//     title: 'Tem certeza?',
+//     text: "Você não podera reverter isso!",
+//     type: 'warning',
+//     showCancelButton: true,
+//     confirmButtonText: 'Sim, deletar!',
+//     cancelButtonText: 'Não, cancelar!',
+//     reverseButtons: true
+//   }).then((result) => {
+//     if (result.value) {
+//       swalWithBootstrapButtons.fire(
+//         'Deletado!',
+//         'O produto foi deletado.',
+//         'success'
+//       );
+//
+//       $(document).ready(function () {
+//
+//         $.ajax({
+//           type: "DELETE",
+//           url: "",
+//           data: id,
+//           success: function(msg){
+//             alert("Data Deleted: " + msg);
+//           }
+//         });
+//
+//       });
+//     } else if (
+//       // Read more about handling dismissals
+//       result.dismiss === Swal.DismissReason.cancel
+//     ) {
+//       swalWithBootstrapButtons.fire(
+//         'Cancelado',
+//         'Seu produto esta seguro :)',
+//         'error'
+//       )
+//     }
+//   });
+// }
 
-                        $.ajax({
-                            type: "DELETE",
-                            url: "",
-                            data: id,
-                            success: function(msg){
-                                alert("Data Deleted: " + msg);
-                            }
-                        });
-
-                        });
-                    } else if (
-                        // Read more about handling dismissals
-                        result.dismiss === Swal.DismissReason.cancel
-                    ) {
-                        swalWithBootstrapButtons.fire(
-                            'Cancelado',
-                            'Seu produto esta seguro :)',
-                            'error'
-                        )
-                    }
-                });
-            }
-
-    </script>
+</script>
 
 <div class="card">
   <div class="card-body">
 
     <a href="{{route('produtos.novo')}}" class="btn btn-info">Novo produto</a>
+
+    <br>
+    <br>
 
     <table class="table" id="table">
       <thead>
@@ -76,24 +100,77 @@
         <th> Manipulado </th>
         <th> Estoque </th>
         <th> Valor Unitário </th>
+        <th>  </th>
       </thead>
       <tbody>
         @forelse($produtos as $produto)
-          <tr>
-            <td>{{$produto->id}}</td>
-            <td>{{$produto->nome}}</td>
-            <td>{{$produto->categoria->nome}}</td>
-            <td>{{$produto->grupo->nome}}</td>
-            <td>{{$produto->manipulado}}</td>
-            <td>{{$produto->estoque}}</td>
-            <td>R$ {{$produto->valor_unitario}}</td>
+        <tr>
+          <td>{{$produto->id}}</td>
+          <td>{{$produto->nome}}</td>
+          <td>{{$produto->categoria->nome}}</td>
+          <td>{{$produto->grupo->nome}}</td>
+          <td>{{$produto->manipulado}}</td>
+          <td>{{$produto->estoque}}</td>
+          <td>R$ {{$produto->valor_unitario}}</td>
 
-            <td>
-              <a href="{{ route('produtos.editar', $produto->id) }}"><i class="fas fa-cog" style="color: black;"></i></a>
-              |
-              <a href="#" onclick="(deletar({{$produto->id}}))"><i class="far fa-trash-alt" style="color: black;"></i></a>
-            </td>
-          </tr>
+          <td>
+            <a href="#editar_{{$produto->id}}" data-toggle="modal"><i class="fas fa-cog" style="color: black;"></i></a>
+            |
+            <a href="#excluir_{{$produto->id}}" data-toggle="modal"><i class="far fa-trash-alt" style="color: black;"></i></a>
+          </td>
+        </tr>
+
+        <!-- Modal Editar -->
+        <div class="modal fade" id="editar_{{$produto->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Editar Produto </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <form method="POST" action="{{ route('produtos.atualizar', $produto->id) }}" id='form'>
+
+                  @include('produtos.forms.form')
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+                <button type="submit" class="btn btn-success"> Salvar </button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Excluir -->
+        <div class="modal fade" id="excluir_{{$produto->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Excluir Produto </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <form method="POST" action="{{ route('produtos.excluir', $produto->id) }}">
+
+                  {{ csrf_field() }}
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+                <button type="submit" class="btn btn-primary"> Excluir </button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
 
         @empty
         <div class="container text-center">
