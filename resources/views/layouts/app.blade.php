@@ -86,8 +86,8 @@
   <script src="{{ asset('theme/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
   <script src="{{ asset('theme/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 
-{{--  <!-- jQuery Knob Chart -->--}}
-{{--  <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script>--}}
+  <!-- jQuery Knob Chart -->
+ <!-- <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script> -->
 
   <!-- daterangepicker -->
   <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js') }}"></script>
@@ -194,12 +194,6 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('comandas.index') }}" class="nav-link">
-                  <i class="fas fa-receipt"></i>
-                  <p> Comanda </p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="{{ route('grupos.index') }}" class="nav-link">
                   <i class="fas fa-box"></i>
                   <p> Grupos </p>
@@ -273,8 +267,13 @@
                   <p> Suplemento </p>
                 </a>
               </li>
-
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('comandas.index') }}" class="nav-link">
+              <i class="fas fa-receipt"></i>
+              <p> Comanda </p>
+            </a>
           </li>
 
           @if(Auth::user()->perfil == 'administrador')
