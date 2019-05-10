@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('icone/apple-icon-57x57.png') }}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('icone/apple-icon-60x60.png') }}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('icone/apple-icon-72x72.png') }}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('icone/apple-icon-76x76.png') }}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('icone/apple-icon-114x114.png') }}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('icone/apple-icon-120x120.png') }}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('icone/apple-icon-144x144.png') }}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('icone/apple-icon-152x152.png') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icone/apple-icon-180x180.png') }}">
+  <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('icone/android-icon-192x192.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icone/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('icone/favicon-96x96.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icone/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ asset ('icons/manifest.json') }}">
+  <meta name="msapplication-TileColor" content="">
+  <meta name="msapplication-TileImage" content="{{ asset ('icons/ms-icon-144x144.png') }}">
+  <meta name="theme-color" content=""> -->
 
 
   <!-- Título -->
@@ -55,7 +74,7 @@
 
 
   <!-- Scripts -->
-<!-- <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script> -->
+  <!-- <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script> -->
 
   <!-- DataTables -->
   <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
@@ -173,140 +192,146 @@
       <span class="brand-text font-light"> JSystem </span>
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
+    @if(Auth::guest())
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+    @elseif(Auth::check())
+      <!-- Sidebar -->
+      <div class="sidebar">
 
-          <li class="nav-header"> Menu </li>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="fas fa-cog"></i>
-              <p>
-                Parâmetros do sistema
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('grupos.index') }}" class="nav-link">
-                  <i class="fas fa-box"></i>
-                  <p> Grupos </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('categorias.index') }}" class="nav-link">
-                  <i class="fas fa-boxes"></i>
-                  <p> Categorias </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('produtos.index') }}" class="nav-link">
-                  <i class="fas fa-tag"></i>
-                  <p> Produtos </p>
-                </a>
-              </li>
-            </ul>
-          </li>
+            <li class="nav-header"> Menu </li>
 
-          <li class="nav-header"> Caixa </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="fas fa-cog"></i>
+                <p>
+                  Parâmetros do sistema
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('grupos.index') }}" class="nav-link">
+                    <i class="fas fa-box"></i>
+                    <p> Grupos </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('categorias.index') }}" class="nav-link">
+                    <i class="fas fa-boxes"></i>
+                    <p> Categorias </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('produtos.index') }}" class="nav-link">
+                    <i class="fas fa-tag"></i>
+                    <p> Produtos </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="fas fa-dollar-sign"></i>
-              <p>
-                Pagamentos
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
-                  <i class="fas fa-scroll"></i>
-                  <p> Comanda </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
-                  <i class="fas fa-chair"></i>
-                  <p> Mesa </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
-                  <i class="fas fa-beer"></i>
-                  <p> Balcão </p>
-                </a>
-              </li>
-            </ul>
-          </li>
+            <li class="nav-header"> Caixa </li>
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="fas fa-cash-register"></i>
-              <p>
-                Sangria
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
-                  <i class="fas fa-key"></i>
-                  <p> Abrir Caixa </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
-                  <i class="fas fa-angle-double-up"></i>
-                  <p> Suplemento </p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('comandas.index') }}" class="nav-link">
-              <i class="fas fa-receipt"></i>
-              <p> Comanda </p>
-            </a>
-          </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="fas fa-dollar-sign"></i>
+                <p>
+                  Pagamentos
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-scroll"></i>
+                    <p> Comanda </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-chair"></i>
+                    <p> Mesa </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-beer"></i>
+                    <p> Balcão </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
-          @if(Auth::user()->perfil == 'administrador')
-            <li class="nav-header"> Relatórios </li>
-
+            @if(Auth::user()->perfil == 'administrador')
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-cash-register"></i>
+                  <p>
+                    Sangria
+                    <i class="right fa fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-key"></i>
+                      <p> Abrir Caixa </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-angle-double-up"></i>
+                      <p> Suplemento </p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            @endif
             <li class="nav-item">
-              <a href="{{ route('relatorios.funcionarios') }}" class="nav-link">
-                <i class="fas fa-users"></i>
-                <p> Funcionários </p>
+              <a href="{{ route('comandas.index') }}" class="nav-link">
+                <i class="fas fa-receipt"></i>
+                <p> Comanda </p>
               </a>
             </li>
-          @endif
 
-          <li class="nav-header"> Conta </li>
+            @if(Auth::user()->perfil == 'administrador')
+              <li class="nav-header"> Relatórios </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-user"></i>
-              <p> Perfil </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#sair" data-toggle="modal" class="nav-link">
-              <i class="fas fa-power-off"></i>
-              <p> Sair </p>
-            </a>
-          </li>
+              <li class="nav-item">
+                <a href="{{ route('relatorios.funcionarios') }}" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p> Funcionários </p>
+                </a>
+              </li>
+            @endif
 
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
+            <li class="nav-header"> Conta </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-user"></i>
+                <p> Perfil </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#sair" data-toggle="modal" class="nav-link">
+                <i class="fas fa-power-off"></i>
+                <p> Sair </p>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+    @endif
+      <!-- /.sidebar -->
   </aside>
 
 
