@@ -10,7 +10,7 @@ class CreateComandasTable extends Migration
     {
         Schema::create('comandas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('status');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

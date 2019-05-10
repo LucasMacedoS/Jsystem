@@ -76,11 +76,12 @@
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <section class="col-lg-7 connectedSortable">
+    <section class="col-lg-7 mx-auto connectedSortable">
 
+      <img src="{{ asset('img/logo.png')  }}" style="width:100%">
 
       <!-- TO DO List -->
-      <div class="card">
+      <!-- <div class="card">
         <div class="card-header">
           <h3 class="card-title">
             <i class="ion ion-clipboard mr-1"></i>
@@ -96,27 +97,27 @@
               <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
             </ul>
           </div>
-        </div>
+        </div> -->
         <!-- /.card-header -->
-        <div class="card-body">
+        <!-- <div class="card-body">
           <ul class="todo-list">
-            <li>
+            <li> -->
               <!-- drag handle -->
-              <span class="handle">
+              <!-- <span class="handle">
                 <i class="fa fa-ellipsis-v"></i>
                 <i class="fa fa-ellipsis-v"></i>
-              </span>
+              </span> -->
               <!-- checkbox -->
-              <input type="checkbox" value="" name="">
+              <!-- <input type="checkbox" value="" name=""> -->
               <!-- todo text -->
-              <span class="text">Design a nice theme</span>
+              <!-- <span class="text">Design a nice theme</span> -->
               <!-- Emphasis label -->
-              <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+              <!-- <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
 
 
 
               <!-- Ferramentas de editar e deletar -->
-              <div class="tools">
+              <!-- <div class="tools">
                 <i class="fa fa-edit"></i>
                 <i class="fa fa-trash-o"></i>
               </div>
@@ -187,14 +188,14 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> -->
 
         <!-- End Body Card -->
-        <div class="card-footer clearfix">
+        <!-- <div class="card-footer clearfix">
           <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Adicionar item</button>
         </div>
 
-      </div>
+      </div> -->
       <!-- End Card -->
 
 @endsection
