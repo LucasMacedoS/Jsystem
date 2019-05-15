@@ -7,13 +7,13 @@ class ComandasSeeder extends Seeder
     public function run()
     {
         DB::table('comandas')->insert([
-            'status' => 'INATIVO'
+            'status' => 0
         ]);
         DB::table('comandas')->insert([
-            'status' => 'ATIVO'
+            'status' => 1
         ]);
         DB::table('comandas')->insert([
-            'status' => 'ATIVO'
+            'status' => 1
         ]);
     }
 }

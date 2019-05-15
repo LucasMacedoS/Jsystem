@@ -10,7 +10,7 @@ class ProdutosSeeder extends Seeder
             'nome' => 'Skol 1L',
             'categoria_id' => '2',
             'grupo_id' => '1',
-            'manipulado' => 'N',
+            'manipulado' => 0,
             'estoque' => '100',
             'valor_unitario' => '11.50'
         ]);
@@ -18,7 +18,7 @@ class ProdutosSeeder extends Seeder
             'nome' => 'Pizza - Mussarela',
             'categoria_id' => '1',
             'grupo_id' => '3',
-            'manipulado' => 'S',
+            'manipulado' => 1,
             'estoque' => '7',
             'valor_unitario' => '22.99'
         ]);
@@ -26,7 +26,7 @@ class ProdutosSeeder extends Seeder
             'nome' => 'Feijoada',
             'categoria_id' => '4',
             'grupo_id' => '2',
-            'manipulado' => 'S',
+            'manipulado' => 1,
             'estoque' => '15',
             'valor_unitario' => '17.00'
         ]);
@@ -34,9 +34,9 @@ class ProdutosSeeder extends Seeder
             'nome' => 'Coca-Cola 600ml',
             'categoria_id' => '3',
             'grupo_id' => '1',
-            'manipulado' => 'N',
+            'manipulado' => 0,
             'estoque' => '252',
             'valor_unitario' => '6.50'
-        ]); 
+        ]);
     }
 }

@@ -13,75 +13,80 @@
 
     <a href="{{route('grupos.novo')}}" class="btn btn-info"> Novo grupo </a>
 
-    <table class="table" id="myTable">
+    <br>
+    <br>
+
+    <table class="table" id="table">
       <thead>
         <th> #ID </th>
         <th> Nome  </th>
+        <th>  </th>
       </thead>
       <tbody>
         @forelse($grupos as $grupo)
+        <tr>
+          <td>{{$grupo->id}}</td>
+          <td>{{$grupo->nome}}</td>
 
-        <script>
+          <td>
+            <a href="#editar_{{$grupo->id}}" data-toggle="modal"><i class="fas fa-cog text-dark"></i></a>
+            |
+            <a href="#excluir_{{$grupo->id}}" data-toggle="modal"><i class="far fa-trash-alt text-dark"></i></a>
+          </td>
+        </tr>
 
-          $(document).ready(function() {
-            
-            $('#botao_deletar_{{$grupo->id}}').click(function(){
+        <!-- Modal Editar -->
+        <div class="modal fade" id="editar_{{$grupo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Editar Grupo </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
 
-              // alert('bateu');
+                <form method="POST" action="{{ route('grupos.atualizar', $grupo->id) }}">
 
-              const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                  confirmButton: 'btn btn-success',
-                  cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false,
-              })
+                  @include('grupos.forms.form')
 
-              swalWithBootstrapButtons.fire({
-                title: 'Tem certeza?',
-                text: "Todas as categorias vinculadas a esse grupo serão apagadas!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Sim, deletar!',
-                cancelButtonText: 'Não, cancelar!',
-                reverseButtons: true
-              }).then((result) => {
-                if (result.value) {
-                  swalWithBootstrapButtons.fire(
-                    'Deletado!',
-                    'Grupo deletado.',
-                    'success'
-                  )
-                  $('#form_deletar').submit();
-                } else if (
-                  // Read more about handling dismissals
-                  result.dismiss === Swal.DismissReason.cancel
-                ) {
-                  swalWithBootstrapButtons.fire(
-                    'Cancelado',
-                    'Seu grupo está salvo :)',
-                    'error'
-                  )
-                }
-              });
-            });
-          });
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+                  <button type="submit" class="btn btn-success"> Salvar </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
 
+        <!-- Modal Excluir -->
+        <div class="modal fade" id="excluir_{{$grupo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Excluir Grupo </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
 
-        </script>
+                <form method="POST" action="{{ route('grupos.excluir', $grupo->id) }}">
 
-          <tr>
-            <td>{{$grupo->id}}</td>
-            <td>{{$grupo->nome}}</td>
+                  {{ csrf_field() }}
 
-            <td>
-              <a href="{{ route('grupos.editar', $grupo->id) }}" class='btn btn-light'><i class="fas fa-cog text-dark"></i></a>
-              |
-              <button class='btn bg-light' id='botao_deletar_{{$grupo->id}}'><i class="far fa-trash-alt text-dark"></i></button>
-            </td>
-          </tr>
-          
-        <form action="{{ route('grupos.deletar', $grupo->id) }}" method='delete' id=form_deletar> {{ csrf_field() }} </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+                  <button type="submit" class="btn btn-primary"> Excluir </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
         @empty
         <div class="container text-center">
           <div class="text-danger">

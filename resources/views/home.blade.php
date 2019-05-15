@@ -11,14 +11,14 @@
       <!-- small box -->
       <div class="small-box bg-info">
         <div class="inner">
-          <h3>15</h3>
+          <h3> {{ $comandas }}</h3>
 
           <p> Comandas ativas </p>
         </div>
         <div class="icon">
           <i class="fas fa-receipt"></i>
         </div>
-        <a href="#" class="small-box-footer"> Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{ route('comandas.index') }}" class="small-box-footer"> Mais informações <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -34,7 +34,7 @@
         <div class="icon">
           <i class="far fa-chart-bar"></i>
         </div>
-        <a href="#" class="small-box-footer"> Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{ route('relatorios.funcionarios') }}" class="small-box-footer"> Mais informações <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -42,7 +42,7 @@
       <!-- small box -->
       <div class="small-box bg-warning">
         <div class="inner">
-          <h3>44</h3>
+          <h3>{{ $funcionarios }}</h3>
 
           <p> Funcionários </p>
         </div>
@@ -76,11 +76,12 @@
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <section class="col-lg-7 connectedSortable">
+    <section class="col-lg-7 mx-auto connectedSortable">
 
+      <img src="{{ asset('img/logo.png')  }}" style="width:100%">
 
       <!-- TO DO List -->
-      <div class="card">
+      <!-- <div class="card">
         <div class="card-header">
           <h3 class="card-title">
             <i class="ion ion-clipboard mr-1"></i>
@@ -96,27 +97,27 @@
               <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
             </ul>
           </div>
-        </div>
+        </div> -->
         <!-- /.card-header -->
-        <div class="card-body">
+        <!-- <div class="card-body">
           <ul class="todo-list">
-            <li>
+            <li> -->
               <!-- drag handle -->
-              <span class="handle">
+              <!-- <span class="handle">
                 <i class="fa fa-ellipsis-v"></i>
                 <i class="fa fa-ellipsis-v"></i>
-              </span>
+              </span> -->
               <!-- checkbox -->
-              <input type="checkbox" value="" name="">
+              <!-- <input type="checkbox" value="" name=""> -->
               <!-- todo text -->
-              <span class="text">Design a nice theme</span>
+              <!-- <span class="text">Design a nice theme</span> -->
               <!-- Emphasis label -->
-              <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+              <!-- <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
 
 
 
               <!-- Ferramentas de editar e deletar -->
-              <div class="tools">
+              <!-- <div class="tools">
                 <i class="fa fa-edit"></i>
                 <i class="fa fa-trash-o"></i>
               </div>
@@ -187,14 +188,14 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> -->
 
         <!-- End Body Card -->
-        <div class="card-footer clearfix">
+        <!-- <div class="card-footer clearfix">
           <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Adicionar item</button>
         </div>
 
-      </div>
+      </div> -->
       <!-- End Card -->
 
 @endsection

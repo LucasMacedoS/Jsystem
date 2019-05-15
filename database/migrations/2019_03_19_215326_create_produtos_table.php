@@ -16,7 +16,7 @@ class CreateProdutosTable extends Migration
             $table->string('nome');
             $table->integer('categoria_id')->unsigned();
             $table->integer('grupo_id')->unsigned();
-            $table->string('manipulado');
+            $table->boolean('manipulado');
             $table->integer('estoque');
             $table->float('valor_unitario');
             $table->foreign('categoria_id')->references('id')->on('categorias');

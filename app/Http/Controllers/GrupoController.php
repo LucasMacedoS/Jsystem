@@ -61,7 +61,7 @@ class GrupoController extends Controller
 
     // Atualiza o cadastro de um grupo no banco de dados
     public function atualizar(Request $request, $id)
-    {   
+    {
         // dd($request);
         $grupo = Grupo::find($id);
         // dd($grupo);
@@ -73,12 +73,12 @@ class GrupoController extends Controller
 
 
     //Deleta um grupo do banco de dados
-    public function deletar($id)
+    public function excluir($id)
     {
         $grupo = Grupo::find($id);
         $grupo->delete();
         // dd($grupo);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Grupo excluido com sucesso!');
     }
 
 

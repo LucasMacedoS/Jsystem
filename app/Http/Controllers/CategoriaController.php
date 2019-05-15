@@ -19,8 +19,10 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Categoria::all();
+        $grupos = Grupo::all();
 
         return view('categorias.index')
+            ->with('grupos', $grupos)
             ->with('categorias', $categorias);
     }
 
@@ -77,7 +79,7 @@ class CategoriaController extends Controller
 
 
     // Deleta uma categoria do banco de dados
-    public function deletar($id)
+    public function excluir($id)
     {
         $categoria = Categoria::find($id);
         $categoria->delete();

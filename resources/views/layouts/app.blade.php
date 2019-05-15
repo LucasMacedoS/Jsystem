@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="icon" href="{{ asset('img/logo.png') }}">
+  <!-- <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('icone/apple-icon-57x57.png') }}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('icone/apple-icon-60x60.png') }}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('icone/apple-icon-72x72.png') }}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('icone/apple-icon-76x76.png') }}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('icone/apple-icon-114x114.png') }}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('icone/apple-icon-120x120.png') }}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('icone/apple-icon-144x144.png') }}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('icone/apple-icon-152x152.png') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icone/apple-icon-180x180.png') }}">
+  <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('icone/android-icon-192x192.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icone/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('icone/favicon-96x96.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icone/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ asset ('icons/manifest.json') }}">
+  <meta name="msapplication-TileColor" content="">
+  <meta name="msapplication-TileImage" content="{{ asset ('icons/ms-icon-144x144.png') }}">
+  <meta name="theme-color" content=""> -->
 
 
   <!-- Título -->
   <title> @yield('title') </title>
+
+  <!-- jQuery -->
+  <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
 
 
   <!-- Tell the browser to be responsive to screen width -->
@@ -16,11 +39,8 @@
   <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
   <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
 
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css')}}">
-  <script src="{{ asset('//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')}}" charset="utf-8"></script>
-
   <!-- Styles -->
+
   <!-- Font Awesome -->
   <!-- <link rel="stylesheet" href="{{ asset('theme/plugins/font-awesome/css/font-awesome.min.css') }}"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -55,10 +75,11 @@
 
 
   <!-- Scripts -->
+  <!-- <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script> -->
 
-  <!-- jQuery -->
-  <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
-{{--  <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>--}}
+  <!-- DataTables -->
+  <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
+  <script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
 
   <!-- jQuery Mask-->
   <script src="{{ asset('js/jquery.mask.js') }}"></script>
@@ -85,8 +106,8 @@
   <script src="{{ asset('theme/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
   <script src="{{ asset('theme/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 
-{{--  <!-- jQuery Knob Chart -->--}}
-{{--  <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script>--}}
+  <!-- jQuery Knob Chart -->
+  <!-- <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script> -->
 
   <!-- daterangepicker -->
   <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js') }}"></script>
@@ -119,165 +140,289 @@
 
 
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+  <div class="wrapper">
 
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand bg-danger navbar-light border-bottom">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand bg-danger navbar-light border-bottom">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+        </li>
 
 
-    </ul>
+      </ul>
 
-    <!-- SEARCH FORM -->
-    <!-- <form class="form-inline ml-3">
+      <!-- SEARCH FORM -->
+      <!-- <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form> -->
+      <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+      <div class="input-group-append">
+      <button class="btn btn-navbar" type="submit">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>
+</form> -->
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+<!-- Right navbar links -->
+<ul class="navbar-nav ml-auto">
 
-      @if(Auth::guest())
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ route('login') }}"> <i class="fas fa-sign-in-alt"></i> Login </a>
+  @if(Auth::guest())
+  <li class="nav-item active">
+    <a class="nav-link" href="{{ route('login') }}"> <i class="fas fa-sign-in-alt"></i> Login </a>
+  </li>
+  @elseif(Auth::check())
+  <li class="nav-item active">
+    <a class="nav-link" href="#sair" data-toggle="modal"> <i class="fas fa-sign-out-alt"></i> {{Auth::user()->nome}} </a>
+  </li>
+  @endif
+</ul>
+</nav>
+<!-- /.navbar -->
+
+
+
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{{ route('home') }}" class="brand-link bg-danger">
+    <img src="{{ asset('img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-light"> JSystem </span>
+  </a>
+
+  @if(Auth::guest())
+
+  @elseif(Auth::check())
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+        with font-awesome or any other icon font library -->
+
+        <li class="nav-header"> Menu </li>
+
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="fas fa-cog"></i>
+            <p>
+              Parâmetros do sistema
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('grupos.index') }}" class="nav-link">
+                <i class="fas fa-box"></i>
+                <p> Grupos </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('categorias.index') }}" class="nav-link">
+                <i class="fas fa-boxes"></i>
+                <p> Categorias </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('produtos.index') }}" class="nav-link">
+                <i class="fas fa-tag"></i>
+                <p> Produtos </p>
+              </a>
+            </li>
+          </ul>
         </li>
-      @elseif(Auth::check())
-        <li class="nav-item active">
-          <a class="nav-link" href=""> <i class="fas fa-sign-out-alt"></i> {{Auth::user()->nome}} </a>
+
+        <li class="nav-header"> Caixa </li>
+
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="fas fa-dollar-sign"></i>
+            <p>
+              Pagamentos
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-scroll"></i>
+                <p> Comanda </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-chair"></i>
+                <p> Mesa </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-beer"></i>
+                <p> Balcão </p>
+              </a>
+            </li>
+          </ul>
         </li>
-      @endif
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+
+        @if(Auth::user()->perfil == 'administrador')
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="fas fa-cash-register"></i>
+            <p>
+              Sangria
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-key"></i>
+                <p> Abrir Caixa </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-angle-double-up"></i>
+                <p> Suplemento </p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        @endif
+        <li class="nav-item">
+          <a href="{{ route('comandas.index') }}" class="nav-link">
+            <i class="fas fa-receipt"></i>
+            <p> Comanda </p>
+          </a>
+        </li>
+
+        @if(Auth::user()->perfil == 'administrador')
+        <li class="nav-header"> Relatórios </li>
+
+        <li class="nav-item">
+          <a href="{{ route('relatorios.funcionarios') }}" class="nav-link">
+            <i class="fas fa-users"></i>
+            <p> Funcionários </p>
+          </a>
+        </li>
+        @endif
+
+        <li class="nav-header"> Conta </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-user"></i>
+            <p> Perfil </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#sair" data-toggle="modal" class="nav-link">
+            <i class="fas fa-power-off"></i>
+            <p> Sair </p>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  @endif
+  <!-- /.sidebar -->
+</aside>
 
 
 
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="{{ route('home') }}" class="brand-link bg-danger">
-      <img src="{{ asset('img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-light"> JSystem </span>
-    </a>
+  <!-- Header (Page header) -->
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-    
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-          <li class="nav-header"> Menu </li>
-
-          <li class="nav-item">
-            <a href="{{ route('comandas.index') }}" class="nav-link">
-              <i class="fas fa-receipt"></i>
-              <p> Comanda </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('grupos.index') }}" class="nav-link">
-              <i class="fas fa-box"></i>
-              <p> Grupos </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('categorias.index') }}" class="nav-link">
-              <i class="fas fa-boxes"></i>
-              <p> Categorias </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('produtos.index') }}" class="nav-link">
-              <i class="fas fa-tag"></i>
-              <p> Produtos </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+  <!--  SUBSTITUIDO POR BREADCRUMB -->
+  <!-- <div class="content-header">
+  <div class="container-fluid">
+  <div class="row mb-2">
+  <div class="col-sm-6">
+  <h1 class="m-0 text-dark"> @yield('header') </h1>
+</div>
+</div>
+</div>
+</div> -->
 
 
+@include('alerts.success_toast')
+@include('alerts.success')
+@include('alerts.error')
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Main content -->
+<section class="content">
 
-    <!-- Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark"> @yield('header') </h1>
-          </div>
-        </div>
-      </div>
-    </div>
+  <h5> {{ Breadcrumbs::render() }} </h5>
 
+  @yield('content')
 
-    @include('alerts.success_toast')
-    @include('alerts.success')
-    @include('alerts.error')
-
-    <!-- Main content -->
-    <section class="content">
+</section>
+</div>
+</div>
 
 
-      @yield('content')
-
-    </section>
-        </div>
-      </div>
+</section>
+</div>
 
 
-    </section>
+<footer class="main-footer">
+
+  <div class="text-center">
+    <strong>Copyright &copy; 2018-2019 Jegue's Bar System  .</strong>
+    Todos os direitos reservados.
   </div>
 
+  <div class="float-right d-none d-sm-inline-block">
+    <b> Version </b> 2.0.0
+  </div>
 
-  <footer class="main-footer">
-
-    <div class="text-center">
-      <strong>Copyright &copy; 2018-2019 Jegue's Bar System  .</strong>
-      Todos os direitos reservados.
-    </div>
-
-    <div class="float-right d-none d-sm-inline-block">
-      <b> Version </b> 2.0.0
-    </div>
-
-  </footer>
+</footer>
 
 
 
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
 
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+$.widget.bridge('uibutton', $.ui.button)
 </script>
+
+<!-- Modal Sair -->
+<div class="modal fade" id="sair" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Deseja realmente sair? </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('logout') }}" method="post">
+        {{ csrf_field() }}
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+          <button type="submit" class="btn btn-primary"> Sair </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

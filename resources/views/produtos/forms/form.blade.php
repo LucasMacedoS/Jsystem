@@ -89,11 +89,3 @@
     </div>
 
 </div>
-<div class="row col-md-12 justify-content-center">
-
-    <div class="form-group">
-        <a href="{{ route('produtos.index') }}" class="btn btn-danger">Cancelar</a>
-        <input type="submit" value="Salvar" class="btn btn-primary">
-    </div>
-
-</div>

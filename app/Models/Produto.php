@@ -8,7 +8,7 @@ class Produto extends Model
 {
 
     protected $fillable = [
-      'nome', 'categoria', 'grupo', 'manipulado', 'estoque',
+      'nome', 'categoria_id', 'grupo_id', 'manipulado', 'estoque',
       'valor_unitario'
     ];
 

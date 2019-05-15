@@ -15,9 +15,10 @@
 Auth::routes();
 
 //Home
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', 'UsuarioController@home')->name('home');
+// Route::get('/', function () {
+//     return view('home');
+// })->name('home');
 
 //Rota Coringa
 // Route::get('/login', function () {
@@ -32,44 +33,50 @@ Route::post('/registro/salvar', 'UsuarioController@salvar')->name('registro.salv
 
 //Grupos
 Route::prefix('grupos')->group(function (){
-    Route::get('/', 'GrupoController@index')->name('grupos.index');
-    Route::get('/novo', 'GrupoController@novo')->name('grupos.novo');
-    Route::post('/salvar', 'GrupoController@salvar')->name('grupos.salvar');
-    Route::get('/editar/{id}', 'GrupoController@editar')->name('grupos.editar');
-    Route::post('/{id}', 'GrupoController@atualizar')->name('grupos.atualizar');
-    Route::get('/deletar/{id}', 'GrupoController@deletar')->name('grupos.deletar');
+    Route::get('/', 'GrupoController@index')->name('grupos.index')->middleware('auth');
+    Route::get('/novo', 'GrupoController@novo')->name('grupos.novo')->middleware('auth');
+    Route::post('/salvar', 'GrupoController@salvar')->name('grupos.salvar')->middleware('auth');
+    Route::get('/editar/{id}', 'GrupoController@editar')->name('grupos.editar')->middleware('auth');
+    Route::post('/{id}', 'GrupoController@atualizar')->name('grupos.atualizar')->middleware('auth');
+    Route::post('/excluir/{id}', 'GrupoController@excluir')->name('grupos.excluir')->middleware('auth');
 });
 
 
 
 //Categorias
 Route::prefix('categorias')->group(function (){
-    Route::get('/', 'CategoriaController@index')->name('categorias.index');
-    Route::get('/novo', 'CategoriaController@novo')->name('categorias.novo');
-    Route::post('/salvar', 'CategoriaController@salvar')->name('categorias.salvar');
-    Route::get('/editar/{id}', 'CategoriaController@editar')->name('categorias.editar');
-    Route::post('/{id}', 'CategoriaController@atualizar')->name('categorias.atualizar');
-    Route::get('/deletar/{id}', 'CategoriaController@deletar')->name('categorias.deletar');
+    Route::get('/', 'CategoriaController@index')->name('categorias.index')->middleware('auth');
+    Route::get('/novo', 'CategoriaController@novo')->name('categorias.novo')->middleware('auth');
+    Route::post('/salvar', 'CategoriaController@salvar')->name('categorias.salvar')->middleware('auth');
+    Route::get('/editar/{id}', 'CategoriaController@editar')->name('categorias.editar')->middleware('auth');
+    Route::post('/{id}', 'CategoriaController@atualizar')->name('categorias.atualizar')->middleware('auth');
+    Route::post('/excluir/{id}', 'CategoriaController@excluir')->name('categorias.excluir')->middleware('auth');
 });
 
 
 //Produtos
 Route::prefix('produtos')->group(function (){
-    Route::get('/', 'ProdutoController@index')->name('produtos.index');
-    Route::get('/novo', 'ProdutoController@novo')->name('produtos.novo');
-    Route::post('/salvar', 'ProdutoController@salvar')->name('produtos.salvar');
-    Route::get('/editar/{id}', 'ProdutoController@editar')->name('produtos.editar');
-    Route::post('/{id}', 'ProdutoController@atualizar')->name('produtos.atualizar');
-    Route::get('/deletar/{id}', 'ProdutoController@deletar')->name('produtos.deletar');
+    Route::get('/', 'ProdutoController@index')->name('produtos.index')->middleware('auth');
+    Route::get('/novo', 'ProdutoController@novo')->name('produtos.novo')->middleware('auth');
+    Route::post('/salvar', 'ProdutoController@salvar')->name('produtos.salvar')->middleware('auth');
+    Route::get('/editar/{id}', 'ProdutoController@editar')->name('produtos.editar')->middleware('auth');
+    Route::post('/{id}', 'ProdutoController@atualizar')->name('produtos.atualizar')->middleware('auth');
+    Route::post('/excluir/{id}', 'ProdutoController@excluir')->name('produtos.excluir')->middleware('auth');
+});
+
+//Relatórios
+Route::prefix('relatorios')->group(function (){
+    Route::get('/', 'RelatorioController@index')->name('relatorios.index')->middleware('auth');
+    Route::get('/funcionarios', 'RelatorioController@funcionarios')->name('relatorios.funcionarios')->middleware('auth');
 });
 
 
 //Comandas
-Route::get('/comandas', 'ComandaController@index')->name('comandas.index');
+Route::get('/comandas', 'ComandaController@index')->name('comandas.index')->middleware('auth');
 
 
 //Usuario Relatório
-Route::get('/usuario', 'UsuarioController@index')->name('usuarios.index');
+Route::get('/usuario', 'UsuarioController@index')->name('usuarios.index')->middleware('auth');
 
 
 

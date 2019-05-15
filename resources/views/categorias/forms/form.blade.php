@@ -7,9 +7,7 @@
         <input type="text" name="nome" placeholder="Nome" class="form-control" value="{{ isset($categoria) ? $categoria->nome : old('nome') }}" required>
     </div>
 
-</div>
 
-<div class="row col-md-12 justify-content-center">
 
     <div class="form-group col-md-6">
         <label> Grupo </label>
@@ -23,17 +21,6 @@
                 <option value="{{ $grupo->id }}"> {{ $grupo->nome }} </option>
             @endforeach
         </select>
-    </div>
-
-</div>
-
-<br>
-
-<div class="row col-md-12 justify-content-center">
-
-    <div class="form-group">
-        <a href="{{ route('categorias.index') }}" class="btn btn-danger"> voltar </a>
-        <input type="submit" value="Salvar" class="btn btn-primary">
     </div>
 
 </div>
