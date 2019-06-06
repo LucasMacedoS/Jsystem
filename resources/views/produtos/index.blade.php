@@ -30,56 +30,6 @@ $(document).ready(function(){
 
 });
 
-// function deletar(id) {
-//
-//   const swalWithBootstrapButtons = Swal.mixin({
-//     customClass: {
-//       confirmButton: 'btn btn-success',
-//       cancelButton: 'btn btn-danger'
-//     },
-//     buttonsStyling: false,
-//   })
-//
-//   swalWithBootstrapButtons.fire({
-//     title: 'Tem certeza?',
-//     text: "Você não podera reverter isso!",
-//     type: 'warning',
-//     showCancelButton: true,
-//     confirmButtonText: 'Sim, deletar!',
-//     cancelButtonText: 'Não, cancelar!',
-//     reverseButtons: true
-//   }).then((result) => {
-//     if (result.value) {
-//       swalWithBootstrapButtons.fire(
-//         'Deletado!',
-//         'O produto foi deletado.',
-//         'success'
-//       );
-//
-//       $(document).ready(function () {
-//
-//         $.ajax({
-//           type: "DELETE",
-//           url: "",
-//           data: id,
-//           success: function(msg){
-//             alert("Data Deleted: " + msg);
-//           }
-//         });
-//
-//       });
-//     } else if (
-//       // Read more about handling dismissals
-//       result.dismiss === Swal.DismissReason.cancel
-//     ) {
-//       swalWithBootstrapButtons.fire(
-//         'Cancelado',
-//         'Seu produto esta seguro :)',
-//         'error'
-//       )
-//     }
-//   });
-// }
 
 </script>
 
