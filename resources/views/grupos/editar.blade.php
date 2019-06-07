@@ -6,7 +6,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('grupos.atualizar', $categoria->id) }}">
+<form method="POST" action="{{ route('grupos.atualizar', $grupo->id) }}">
 
   @include('grupos.forms.form')
 
