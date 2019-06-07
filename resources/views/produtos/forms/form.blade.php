@@ -71,8 +71,8 @@
             @else
                 <option selected disabled hidden> Manipulado </option>
             @endif
-            <option value="Sim"> Sim </option>
-            <option value="Não"> Não </option>
+            <option value="1"> Sim </option>
+            <option value="0"> Não </option>
         </select>
     </div>
     <div class="form-group col-md-4">
