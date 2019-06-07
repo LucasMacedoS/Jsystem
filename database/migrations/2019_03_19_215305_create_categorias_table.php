@@ -15,7 +15,7 @@ class CreateCategoriasTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->integer('grupo_id')->unsigned();
-            $table->foreign('grupo_id')->references('id')->on('grupos');
+                $table->foreign('grupo_id')->references('id')->on('grupos');
             $table->timestamps();
         });
     }

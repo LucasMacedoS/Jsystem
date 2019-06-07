@@ -69,3 +69,20 @@ Breadcrumbs::for('relatorios.funcionarios', function ($trail) {
     $trail->parent('relatorios.index');
     $trail->push('Funcionários', route('relatorios.funcionarios'));
 });
+
+
+// Caixa
+Breadcrumbs::for('caixa.balcao', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Balcão', route('caixa.balcao'));
+});
+
+Breadcrumbs::for('caixa.comanda', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Comanda', route('caixa.comanda'));
+});
+
+Breadcrumbs::for('caixa.index', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Balanço de Caixa', route('caixa.index'));
+});

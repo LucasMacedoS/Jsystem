@@ -8,196 +8,81 @@
 
 
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-3 col-6">
-      <div class="small-box bg-info">
-        <div class="inner">
-          <h3>R$ 15,00</h3>
+    <div class="container-fluid">
+        <div class="row">
 
-          <p> COMANDA 001 </p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DETALHES <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-  	 <div class="small-box bg-info">
-      
-        <div class="inner">
-          <h3>R$ 5,00</h3>
+            @forelse($comandas as $coanda)
 
-          <p> COMANDA 002 </p>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>R$ 15,00</h3>
 
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DETALHES <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-         <div class="small-box bg-info">
-        <div class="inner">
-          <h3>R$ 3,00</h3>
+                            <p> COMANDA 001 </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <a href="#" class="small-box-footer"> DETALHES <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
 
-          <p> COMANDA 003</p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DETALHES <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-        <div class="small-box bg-info">
-        <div class="inner">
-          <h3>R$ 6,50</h3>
+            @empty
 
-          <p> COMANDA 004 </p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DETALHES <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-  </div>
+                Sem comandas ativas
 
-  <br>
+            @endforelse
+        </div>
+
+        <br>
 
 
 
 
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-3 col-6">
-      
-	<div class="small-box bg-warning">
-        <div class="inner">
-          <h3>R$ 00,00</h3>
+        <div class="container-fluid">
+            <div class="row">
 
-          <p> COMANDA 005 </p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-  	
-	<div class="small-box bg-warning">
-      
-        <div class="inner">
-          <h3>R$ 00,00</h3>
+                <div class="col-lg-3 col-6">
 
-          <p> COMANDA 006 </p>
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>R$ 00,00</h3>
 
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-         
-	<div class="small-box bg-warning">
-        <div class="inner">
-          <h3>R$ 00,00</h3>
+                            <p> COMANDA 005 </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
 
-          <p> COMANDA 007</p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-      
-	<div class="small-box bg-warning">
-        <div class="inner">
-          <h3>R$ 00,00</h3>
-
-          <p> COMANDA 008 </p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-  </div>
+            </div>
 
 
-  <br>
+            <br>
 
-  <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-3 col-6">
-      
-	<div class="small-box bg-danger">
-        <div class="inner">
-          <h3>R$ 00,00</h3>
+            <div class="container-fluid">
+                <div class="row">
 
-          <p> COMANDA 005 </p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-  	
-	<div class="small-box bg-danger">
-      
-        <div class="inner">
-          <h3>R$ 00,00</h3>
+                    <div class="col-lg-3 col-6">
 
-          <p> COMANDA 006 </p>
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>R$ 00,00</h3>
 
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-         
-	<div class="small-box bg-danger">
-        <div class="inner">
-          <h3>R$ 00,00</h3>
+                                <p> COMANDA 005 </p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-receipt"></i>
+                            </div>
+                            <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
 
-          <p> COMANDA 007</p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-      
-	<div class="small-box bg-danger">
-        <div class="inner">
-          <h3>R$ 00,00</h3>
+                    </div>
 
-          <p> COMANDA 008 </p>
-        </div>
-        <div class="icon">
-          <i class="fas fa-receipt"></i>
-        </div>
-        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-  </div>
+                </div>
 
 
 @endsection

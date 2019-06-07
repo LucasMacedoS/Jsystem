@@ -71,6 +71,20 @@ Route::prefix('relatorios')->group(function (){
 });
 
 
+//Caixa
+Route::prefix('Caixa')->group(function (){
+
+    Route::get('index', 'CaixaController@index')->name('caixa.index')->middleware('auth');
+    Route::get('pagamento/balcao', 'CaixaController@balcao')->name('caixa.balcao')->middleware('auth');
+    Route::post('pagamento/comanda/', 'CaixaController@comanda')->name('caixa.comanda')->middleware('auth');
+    Route::post('pagamento/comanda/finalizar', 'CaixaController@comanda_pagamento')->name('caixa.comanda.pagamento')->middleware('auth');
+    Route::post('sangria', 'CaixaController@sangria')->name('caixa.sangria')->middleware('auth');
+    Route::post('suplemento', 'CaixaController@suplemento')->name('caixa.suplemento')->middleware('auth');
+
+});
+
+
+
 //Comandas
 Route::get('/comandas', 'ComandaController@index')->name('comandas.index')->middleware('auth');
 

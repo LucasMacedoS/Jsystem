@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BalancoCaixa;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Comanda;
@@ -107,8 +108,17 @@ class UsuarioController extends Controller
 
       $funcionarios = User::where('perfil', 'usuario')->where('status', 1)->count();
       $comandas = Comanda::where('status', 'ATIVO')->count();
+
+      $caixa_suplemento = BalancoCaixa::select('valor')->where('tipo' , 'Suplemento')->sum('valor');
+      $caixa_sangria = BalancoCaixa::select('valor')->where('tipo' , 'sangria')->sum('valor');
+      $caixa_entrada = BalancoCaixa::select('valor')->where('tipo' , 'Entrada')->sum('valor');
+
+      $caixa = (($caixa_suplemento + $caixa_entrada) - $caixa_sangria);
+
+
       return view('home')
         ->with('funcionarios', $funcionarios)
+        ->with('caixa', $caixa)
         ->with('comandas', $comandas);
     }
 

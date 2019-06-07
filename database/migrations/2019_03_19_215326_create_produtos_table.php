@@ -14,13 +14,13 @@ class CreateProdutosTable extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->integer('categoria_id')->unsigned();
-            $table->integer('grupo_id')->unsigned();
             $table->boolean('manipulado');
             $table->integer('estoque');
-            $table->float('valor_unitario');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->foreign('grupo_id')->references('id')->on('grupos');
+            $table->float('valor_unitario',255,2);
+            $table->unsignedInteger('categoria_id');
+                $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->unsignedInteger('grupo_id');
+                $table->foreign('grupo_id')->references('id')->on('grupos');
             $table->timestamps();
         });
     }

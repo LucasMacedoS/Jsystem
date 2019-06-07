@@ -17,7 +17,7 @@ class ComandaController extends Controller
     public function index()
     {
         
-        $comandas = Comanda::all();
+        $comandas = Comanda::where('status', 1)->get();
 
         return view ('comanda.index')->with('comandas', $comandas);
 

@@ -11,6 +11,7 @@ class CreateComandasTable extends Migration
         Schema::create('comandas', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status');
+            $table->float('desconto',255,2);
             $table->timestamps();
         });
     }

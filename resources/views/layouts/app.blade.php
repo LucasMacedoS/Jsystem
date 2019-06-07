@@ -75,7 +75,7 @@
 
 
   <!-- Scripts -->
-<!-- <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script> -->
+{{--<!-- <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script> -->--}}
 
   <!-- DataTables -->
   <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
@@ -106,8 +106,6 @@
   <script src="{{ asset('theme/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
   <script src="{{ asset('theme/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 
-  <!-- jQuery Knob Chart -->
-<!-- <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script> -->
 
   <!-- daterangepicker -->
   <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js') }}"></script>
@@ -140,6 +138,7 @@
 
 
 <body class="hold-transition sidebar-mini">
+
 
 <div class="wrapper">
 
@@ -250,7 +249,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link" >
+                  <a href="#pagamento_comanda" class="nav-link" data-toggle="modal">
                     <i class="fas fa-receipt"></i>
                     <p> Comanda </p>
                   </a>
@@ -262,7 +261,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#pagamento_balcao" class="nav-link" data-toggle="modal">
+                  <a href="{{ route('caixa.balcao') }}" class="nav-link">
                     <i class="fas fa-beer"></i>
                     <p> Balcão </p>
                   </a>
@@ -281,13 +280,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#sangria" class="nav-link" data-toggle="modal">
+                      <i class="fas fa-angle-double-down"></i>
+                      <p> Retirada </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('caixa.index') }}" class="nav-link">
                       <i class="fas fa-key"></i>
                       <p> Abrir Caixa </p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#suplemento" class="nav-link" data-toggle="modal">
                       <i class="fas fa-angle-double-up"></i>
                       <p> Suplemento </p>
                     </a>
@@ -295,12 +300,6 @@
                 </ul>
               </li>
             @endif
-            <li class="nav-item">
-              <a href="{{ route('comandas.index') }}" class="nav-link">
-                <i class="fas fa-receipt"></i>
-                <p> Comanda </p>
-              </a>
-            </li>
 
             @if(Auth::user()->perfil == 'administrador')
               <li class="nav-header"> Relatórios </li>
@@ -309,6 +308,12 @@
                 <a href="{{ route('relatorios.funcionarios') }}" class="nav-link">
                   <i class="fas fa-users"></i>
                   <p> Funcionários </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('comandas.index') }}" class="nav-link">
+                  <i class="fas fa-receipt"></i>
+                  <p> Comanda </p>
                 </a>
               </li>
             @endif
@@ -425,12 +430,12 @@
   </div>
 </div>
 
-<!-- Modal Pagamento Balcão -->
-<div class="modal fade" id="pagamento_balcao" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- Modal Pagamento Comanda -->
+<div class="modal fade" id="pagamento_comanda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"> Consumo em Balcão? </h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"> Consumo em Comanda </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -438,22 +443,105 @@
 
       <div class="modal-body">
 
-      <div class="row">
+        <form action="{{ route('caixa.comanda') }}" method="post">
 
-        <div class="form-group">
-          <label> Item </label>
+          {{ csrf_field() }}
 
-        </div>
+          <div class="row col-md-12 justify-content-center">
 
-      </div>
+            <div class="form-group col-md-6">
+              <label> ID da Comanda </label>
+              <input type="text" name="comanda_id" class="form-control" required>
+
+            </div>
+
+          </div>
 
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
-        <button type="submit" class="btn btn-primary"> Sair </button>
+        <button type="submit" class="btn btn-success"> Procurar </button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Sangria -->
+<div class="modal fade" id="sangria" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Retirada </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 
+      <div class="modal-body">
+
+        <form action="{{ route('caixa.sangria') }}" method="post">
+
+          {{ csrf_field() }}
+
+          <div class="row col-md-12 justify-content-center">
+
+            <div class="form-group col-md-6">
+              <label> Valor a ser retirado </label>
+              <input type="text" name="sangria" class="form-control" id="sangria" required>
+
+            </div>
+
+          </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+        <button type="submit" class="btn btn-success"> Retirar </button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Suplemento -->
+<div class="modal fade" id="suplemento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Suplemento de Caixa </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form action="{{ route('caixa.suplemento') }}" method="post">
+
+          {{ csrf_field() }}
+
+          <div class="row col-md-12 justify-content-center">
+
+            <div class="form-group col-md-6">
+              <label> Valor a ser inserido </label>
+              <input type="text" name="suplemento" class="form-control" id="suplemento" required>
+
+
+            </div>
+
+          </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+        <button type="submit" class="btn btn-success"> Inserir </button>
+      </div>
+      </form>
     </div>
   </div>
 </div>

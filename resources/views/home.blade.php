@@ -26,9 +26,9 @@
       <!-- small box -->
       <div class="small-box bg-success">
         <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
+          <h3> R$ {{ $caixa }} </h3>
 
-          <p> Balanço Semanal </p>
+          <p> Valor em Caixa </p>
 
         </div>
         <div class="icon">
