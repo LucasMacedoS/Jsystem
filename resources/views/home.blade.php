@@ -5,6 +5,9 @@
 @section('content')
 
 <div class="container-fluid">
+
+  @if(Auth::guest())
+    @else
   <!-- Small boxes (Stat box) -->
   <div class="row">
     <div class="col-lg-3 col-6">
@@ -57,7 +60,7 @@
       <!-- small box -->
       <div class="small-box bg-danger">
         <div class="inner">
-          <h3>65</h3>
+          <h3>0</h3>
 
           <p> Relatórios </p>
         </div>
@@ -70,7 +73,7 @@
     <!-- ./col -->
   </div>
   <!-- /.row -->
-
+  @endif
   <br>
 
   <!-- Main row -->

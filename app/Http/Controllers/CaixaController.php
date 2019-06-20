@@ -30,14 +30,37 @@ class CaixaController extends Controller
             ->with('produtos', $produtos);
     }
 
+    public function balcao_pagamento(Request $request){
+
+        dd($request);
+
+        return view('caixa.balcao');
+    }
+
     public function comanda(Request $request){
 
-        $pedidos = Pedido::where('comanda_id', $request->comanda_id)->get();
-        $comanda = $request->comanda_id;
+//        dd($request);
 
-        return view('caixa.comanda')
-            ->with('pedidos', $pedidos)
-            ->with('comanda', $comanda);
+        $pedidos = Pedido::where('comanda_id', $request->comanda_id)->get();
+        $comanda = Comanda::find($request->comanda_id);
+
+//        dd($comanda);
+
+        if($comanda == null){
+
+            return redirect()->back()->with('error', 'Comanda não encontrada');
+        }
+
+        if($comanda->status == 1){
+
+            return view('caixa.comanda')
+                ->with('pedidos', $pedidos)
+                ->with('comanda', $comanda);
+
+        }else{
+
+            return redirect()->back()->with('error', 'Comanda inativa');
+        }
     }
 
     public function comanda_pagamento(Request $request){
@@ -52,24 +75,57 @@ class CaixaController extends Controller
 
         $balanco = new BalancoCaixa;
         $balanco->fill([
-           'venda_id' => $venda->id,
-           'tipo' => 'Entrada_comanda',
-           'valor' => $venda->total_venda,
+            'venda_id' => $venda->id,
+            'tipo' => 'Entrada',
+            'valor' => $venda->total_venda,
         ]);
+        $balanco->save();
 
         $comanda = Comanda::find($request->comanda_id);
         $comanda->status = 0;
         $comanda->save();
 
-        return redirect()->back()->with('success', 'Pagamento realizado com sucesso!');
+        return redirect()->route('home')->with('success', 'Pagamento realizado com sucesso!');
+    }
+
+    public function comanda_pagamento_parcial(Request $request){
+
+//        dd($request);
+
+        $venda = new Venda;
+        $venda->fill([
+            'comanda_id' => $request->comanda_id,
+            'tipo_pagamento' => $request->tipo_pagamento,
+            'total_venda' => $request->pagamento_parcial,
+        ]);
+        $venda->save();
+
+        $balanco = new BalancoCaixa;
+        $balanco->fill([
+            'venda_id' => $venda->id,
+            'tipo' => 'Entrada',
+            'valor' => $venda->total_venda,
+        ]);
+        $balanco->save();
+
+        $comanda = Comanda::find($request->comanda_id);
+
+        $desconto = $comanda->desconto;
+        $desconto += $request->pagamento_parcial;
+
+        $comanda->desconto = $desconto;
+        $comanda->save();
+
+        return redirect()->route('home')->with('success', 'Pagamento realizado com sucesso!');
+
     }
 
     public function sangria(Request $request){
 
         $sangria = new BalancoCaixa;
         $sangria->fill([
-           'tipo' => 'Sangria',
-           'valor' => $request->sangria
+            'tipo' => 'Sangria',
+            'valor' => $request->sangria
         ]);
         $sangria->save();
 
@@ -80,8 +136,8 @@ class CaixaController extends Controller
 
         $suplemento = new BalancoCaixa;
         $suplemento->fill([
-           'tipo' => 'Suplemento',
-           'valor' => $request->suplemento
+            'tipo' => 'Suplemento',
+            'valor' => $request->suplemento
         ]);
         $suplemento->save();
 

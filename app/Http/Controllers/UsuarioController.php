@@ -113,10 +113,12 @@ class UsuarioController extends Controller
       $caixa_sangria = BalancoCaixa::select('valor')->where('tipo' , 'sangria')->sum('valor');
       $caixa_entrada = BalancoCaixa::select('valor')->where('tipo' , 'Entrada')->sum('valor');
 
-      $caixa = (($caixa_suplemento + $caixa_entrada) - $caixa_sangria);
+//        dd($caixa_entrada);
+
+        $caixa = (($caixa_suplemento + $caixa_entrada) - $caixa_sangria);
 
 
-      return view('home')
+        return view('home')
         ->with('funcionarios', $funcionarios)
         ->with('caixa', $caixa)
         ->with('comandas', $comandas);

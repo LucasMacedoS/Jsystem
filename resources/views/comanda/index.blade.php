@@ -11,19 +11,19 @@
     <div class="container-fluid">
         <div class="row">
 
-            @forelse($comandas as $coanda)
+            @forelse($comandas as $comanda)
 
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>R$ 15,00</h3>
+                            <h3><small>Pedidos</small> {{$comanda->pedidos}}</h3>
 
-                            <p> COMANDA 001 </p>
+                            <p> Comanda {{ $comanda->id }} </p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-receipt"></i>
                         </div>
-                        <a href="#" class="small-box-footer"> DETALHES <i class="fa fa-arrow-circle-right"></i></a>
+{{--                        <a href="#" class="small-box-footer"> DETALHES <i class="fa fa-arrow-circle-right"></i></a>--}}
                     </div>
                 </div>
 
@@ -47,14 +47,14 @@
 
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>R$ 00,00</h3>
+                            <h3> <small> Pedidos </small> 10 </h3>
 
                             <p> COMANDA 005 </p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-receipt"></i>
                         </div>
-                        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
+{{--                        <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>--}}
                     </div>
                 </div>
 
@@ -70,14 +70,14 @@
 
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>R$ 00,00</h3>
+                                <h3> <small> Pedidos </small> 5 </h3>
 
                                 <p> COMANDA 005 </p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-receipt"></i>
                             </div>
-                            <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>
+{{--                            <a href="#" class="small-box-footer"> DISPONIVEL <i class="fa fa-arrow-circle-right"></i></a>--}}
                         </div>
 
                     </div>

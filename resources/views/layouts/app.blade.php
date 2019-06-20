@@ -254,18 +254,18 @@
                     <p> Comanda </p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fas fa-chair"></i>
-                    <p> Mesa </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('caixa.balcao') }}" class="nav-link">
-                    <i class="fas fa-beer"></i>
-                    <p> Balcão </p>
-                  </a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                  <a href="#" class="nav-link">--}}
+{{--                    <i class="fas fa-chair"></i>--}}
+{{--                    <p> Mesa </p>--}}
+{{--                  </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                  <a href="{{ route('caixa.balcao') }}" class="nav-link">--}}
+{{--                    <i class="fas fa-beer"></i>--}}
+{{--                    <p> Balcão </p>--}}
+{{--                  </a>--}}
+{{--                </li>--}}
               </ul>
             </li>
 
@@ -320,12 +320,12 @@
 
             <li class="nav-header"> Conta </li>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-user"></i>
-                <p> Perfil </p>
-              </a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--              <a href="#" class="nav-link">--}}
+{{--                <i class="fas fa-user"></i>--}}
+{{--                <p> Perfil </p>--}}
+{{--              </a>--}}
+{{--            </li>--}}
             <li class="nav-item">
               <a href="#sair" data-toggle="modal" class="nav-link">
                 <i class="fas fa-power-off"></i>

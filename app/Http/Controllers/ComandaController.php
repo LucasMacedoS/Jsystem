@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 use App\Models\Comanda;
 
@@ -18,6 +19,16 @@ class ComandaController extends Controller
     {
         
         $comandas = Comanda::where('status', 1)->get();
+
+        foreach ($comandas as $comanda){
+
+            $pedidos = Pedido::where('comanda_id', $comanda->id)->count();
+
+            $comanda['pedidos'] = $pedidos;
+
+        }
+
+//        dd($comandas);
 
         return view ('comanda.index')->with('comandas', $comandas);
 

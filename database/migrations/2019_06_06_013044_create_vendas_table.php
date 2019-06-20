@@ -14,8 +14,7 @@ class CreateVendasTable extends Migration
             $table->unsignedInteger('comanda_id');
                 $table->foreign('comanda_id')->references('id')->on('comandas');
 
-            $table->unsignedInteger('tipo_pagamento_id');
-                $table->foreign('tipo_pagamento_id')->references('id')->on('tipo_pagamento');
+            $table->string('tipo_pagamento');
 
 			$table->float('total_venda');
             $table->timestamps();

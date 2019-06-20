@@ -76,8 +76,10 @@ Route::prefix('Caixa')->group(function (){
 
     Route::get('index', 'CaixaController@index')->name('caixa.index')->middleware('auth');
     Route::get('pagamento/balcao', 'CaixaController@balcao')->name('caixa.balcao')->middleware('auth');
+    Route::post('pagamento/balcao/finalizar', 'CaixaController@balcao_pagamento')->name('caixa.balcao.pagamento')->middleware('auth');
     Route::post('pagamento/comanda/', 'CaixaController@comanda')->name('caixa.comanda')->middleware('auth');
     Route::post('pagamento/comanda/finalizar', 'CaixaController@comanda_pagamento')->name('caixa.comanda.pagamento')->middleware('auth');
+    Route::post('pagamento/comanda/parcial', 'CaixaController@comanda_pagamento_parcial')->name('caixa.comanda.pagamento.parcial')->middleware('auth');
     Route::post('sangria', 'CaixaController@sangria')->name('caixa.sangria')->middleware('auth');
     Route::post('suplemento', 'CaixaController@suplemento')->name('caixa.suplemento')->middleware('auth');
 

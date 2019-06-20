@@ -26,7 +26,9 @@
 
         <div class="card-body">
 
-            <form action="">
+            <form method="POST" action="{{ route('caixa.balcao.pagamento') }}" >
+
+            {{ csrf_field() }}
 
                 <div id="itens">
 
@@ -34,7 +36,7 @@
 
                         <div class="form-group col-md-6">
                             <label> Item </label>
-                            <select name="item_id" class="form-control" id="item" required>
+                            <select name="item_id[]" class="form-control" id="item" required>
 
                                 @forelse($produtos as $produto)
                                     <option value=""> </option>
@@ -48,7 +50,7 @@
 
                         <div class="form-group col-md-2">
                             <label> Quantidade </label>
-                            <input type="number" name="quantidade" class="form-control" required>
+                            <input type="number" name="quantidade[]" class="form-control" required>
 
                         </div>
 
@@ -70,6 +72,14 @@
                 </div>
 
                 <div id="teste"></div>
+
+                <br>
+
+                <div class="row col-md-12 justify-content-center">
+
+                    <button role="submit" class="btn btn-success"> Pagar </button>
+
+                </div>
 
             </form>
 
