@@ -34,6 +34,7 @@
                 <tr class="text-center">
                     <td> Tipo </td>
                     <td> Valor </td>
+                    <td> Data </td>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,10 +44,11 @@
                     <tr class="text-center">
                         <td> {{ $caixa->tipo }} </td>
                         @if($caixa->tipo == 'Sangria')
-                            <td> - R$ {{ $caixa->valor }} </td>
+                            <td> - R$ {{ "R$ ".number_format($caixa->valor, 2, ',', '.') }} </td>
                         @else
-                            <td> + R$ {{ $caixa->valor }} </td>
+                            <td> + R$ {{ "R$ ".number_format($caixa->valor, 2, ',', '.') }} </td>
                         @endif
+                        <td>  </td>
                     </tr>
 
                 @empty

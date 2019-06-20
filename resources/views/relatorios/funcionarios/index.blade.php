@@ -40,21 +40,21 @@ $(document).ready(function(){
     <br> -->
 
     <table class="table" id="table">
-      <thead>
+      <thead class="text-center">
         <th> #ID </th>
         <th> Nome  </th>
         <th> E-mail </th>
         <th> Perfil </th>
         <th> Status </th>
       </thead>
-      <tbody>
+      <tbody class="text-center">
         @forelse($funcionarios as $funcionario)
         <tr>
           <td>{{$funcionario->id}}</td>
           <td>{{$funcionario->nome}}</td>
           <td>{{$funcionario->email}}</td>
           <td>{{$funcionario->perfil}}</td>
-          <td>{{$funcionario->status}}</td>
+          <td>{{$funcionario->status()}}</td>
         </tr>
 
         @empty

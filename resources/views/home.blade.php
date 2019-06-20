@@ -29,7 +29,7 @@
       <!-- small box -->
       <div class="small-box bg-success">
         <div class="inner">
-          <h3> R$ {{ $caixa }} </h3>
+          <h3> {{"R$ ".number_format($caixa, 2, ',', '.')}} </h3>
 
           <p> Valor em Caixa </p>
 

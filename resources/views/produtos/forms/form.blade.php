@@ -10,6 +10,7 @@
             decimal: ",",
             thousands: "."
         });
+        $("#preco").maskMoney('mask');
 
         $("#form").submit(function() {
             var preco = $('#preco').maskMoney('unmasked')[0];
@@ -67,7 +68,7 @@
         <label> Manipulado </label>
         <select name="manipulado" class="form-control" required>
             @if(isset($produto))
-                <option value="{{ $produto->manipulado }}" selected hidden> {{ $produto->manipulado }} </option>
+                <option value="{{ $produto->manipulado }}" selected hidden> {{ $produto->manipulado() }} </option>
             @else
                 <option selected disabled hidden> Manipulado </option>
             @endif

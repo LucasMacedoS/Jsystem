@@ -42,7 +42,7 @@ $(document).ready(function(){
     <br>
 
     <table class="table" id="table">
-      <thead>
+      <thead class="text-center">
         <th> #ID </th>
         <th> Nome  </th>
         <th> Categoria </th>
@@ -50,21 +50,21 @@ $(document).ready(function(){
         <th> Manipulado </th>
         <th> Estoque </th>
         <th> Valor Unitário </th>
-        <th>  </th>
+        <th> Ações </th>
       </thead>
-      <tbody>
+      <tbody class="text-center">
         @forelse($produtos as $produto)
         <tr>
           <td>{{$produto->id}}</td>
           <td>{{$produto->nome}}</td>
           <td>{{$produto->categoria->nome}}</td>
           <td>{{$produto->grupo->nome}}</td>
-          <td>{{$produto->manipulado}}</td>
+          <td>{{$produto->manipulado()}}</td>
           <td>{{$produto->estoque}}</td>
-          <td>R$ {{$produto->valor_unitario}}</td>
+          <td>{{ "R$ ".number_format($produto->valor_unitario, 2, ',', '.') }}</td>
 
           <td>
-            <a href="#editar_{{$produto->id}}" data-toggle="modal"><i class="fas fa-cog" style="color: black;"></i></a>
+            <a href="{{ route('produtos.editar', $produto->id) }}"><i class="fas fa-cog" style="color: black;"></i></a>
             |
             <a href="#excluir_{{$produto->id}}" data-toggle="modal"><i class="far fa-trash-alt" style="color: black;"></i></a>
           </td>

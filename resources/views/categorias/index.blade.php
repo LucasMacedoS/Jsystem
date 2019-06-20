@@ -40,13 +40,13 @@ $(document).ready(function(){
     <br>
 
     <table class="table" id="table">
-      <thead>
+      <thead class="text-center">
         <th> #ID </th>
         <th> Categoria  </th>
         <th> Grupo </th>
-        <th>  </th>
+        <th> Ações </th>
       </thead>
-      <tbody>
+      <tbody class="text-center">
         @forelse($categorias as $categoria)
         <tr>
           <td>{{$categoria->id}}</td>

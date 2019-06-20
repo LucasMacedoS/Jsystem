@@ -11,6 +11,12 @@
 
   @include('produtos.forms.form')
 
+  <div class="row col-md-12 justify-content-center">
+
+    <button role="submit" class="btn btn-success"> Enviar </button>
+
+  </div>
+
 </form>
 
 

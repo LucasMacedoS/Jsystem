@@ -27,4 +27,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function status()
+    {
+        $status = [
+            'Inativo',
+            'Ativo'
+        ];
+
+        return $status[$this->status];
+    }
 }

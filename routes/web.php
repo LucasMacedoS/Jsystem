@@ -85,7 +85,13 @@ Route::prefix('Caixa')->group(function (){
 
 });
 
+Route::prefix('erros')->group(function (){
 
+    Route::get('/404', function (){
+        return 'error.404';
+    })->name('errors.404');
+
+});
 
 //Comandas
 Route::get('/comandas', 'ComandaController@index')->name('comandas.index')->middleware('auth');

@@ -63,14 +63,14 @@ class ProdutoController extends Controller
     // Retorna o formulário de edição de produto
     public function editar($id)
     {
-        // $produto = Produto::find($id);
-        // $categorias = Categoria::all();
-        // $grupos = Grupo::all();
-        //
-        // return view('produtos.editar')
-        //     ->with('produto', $produto)
-        //     ->with('categorias', $categorias)
-        //     ->with('grupos', $grupos);
+         $produto = Produto::find($id);
+         $categorias = Categoria::all();
+         $grupos = Grupo::all();
+
+         return view('produtos.editar')
+             ->with('produto', $produto)
+             ->with('categorias', $categorias)
+             ->with('grupos', $grupos);
     }
 
 

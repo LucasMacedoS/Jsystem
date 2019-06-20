@@ -58,6 +58,11 @@ Breadcrumbs::for('produtos.novo', function ($trail) {
     $trail->push('Novo', route('produtos.novo'));
 });
 
+Breadcrumbs::for('produtos.editar', function ($trail, $id) {
+    $trail->parent('produtos.index');
+    $trail->push('Editar', route('produtos.editar', $id));
+});
+
 
 // Relatórios
 Breadcrumbs::for('relatorios.index', function ($trail) {
@@ -85,4 +90,11 @@ Breadcrumbs::for('caixa.comanda', function ($trail) {
 Breadcrumbs::for('caixa.index', function ($trail) {
     $trail->parent('home');
     $trail->push('Balanço de Caixa', route('caixa.index'));
+});
+
+
+// Erros
+Breadcrumbs::for('errors.404', function ($trail) {
+    $trail->parent('home');
+    $trail->push('404', route('errors.404'));
 });

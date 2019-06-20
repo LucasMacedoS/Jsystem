@@ -13,6 +13,16 @@ class Produto extends Model
     ];
 
 
+    public function manipulado()
+    {
+        $manipulado = [
+            'Não',
+            'Sim'
+        ];
+
+        return $manipulado[$this->manipulado];
+    }
+
     public function grupo(){
 
         return $this->hasOne('App\Models\Grupo', 'id', 'grupo_id');

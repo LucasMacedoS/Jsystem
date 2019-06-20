@@ -18,6 +18,12 @@
                 }
             });
 
+            $('#pagamento_parcial').maskMoney({
+                prefix: "R$ ",
+                decimal: ",",
+                thousands: ".",
+            });
+
         });
 
     </script>
@@ -55,8 +61,8 @@
                     <tr class="text-center">
                         <td> {{ $pedido->produto->nome }} </td>
                         <td> {{ $pedido->quantidade }} </td>
-                        <td> R$ {{ $pedido->produto->valor_unitario }} </td>
-                        <td> R$ {{ $pedido->quantidade *  $pedido->produto->valor_unitario}} </td>
+                        <td> {{ "R$ ".number_format($pedido->produto->valor_unitario, 2, ',', '.' )}} </td>
+                        <td> {{ "R$ ".number_format($pedido->quantidade *  $pedido->produto->valor_unitario, 2, ',', '.' )}} </td>
                     </tr>
 
                     <?php $total += $pedido->quantidade * $pedido->produto->valor_unitario ?>
@@ -68,11 +74,11 @@
             </table>
 
             @if(isset($comanda->desconto))
-            <div class="row col-md-12 justify-content-end">
+                <div class="row col-md-12 justify-content-end">
 
-                Desconto: R$ {{$comanda->desconto}}
+                    Desconto: {{ "R$ ".number_format($comanda->desconto, 2, ',', '.')}}
 
-            </div>
+                </div>
             @endif
             <div class="row col-md-12 justify-content-center">
 
@@ -108,15 +114,15 @@
                         <div class="row">
 
                             @if(isset($comanda->desconto))
-                            <div class="form-group col-md-6">
-                                <label> Total </label>
-                                <input type="text" class="form-control" value="R$ {{ $total - $comanda->desconto }}" disabled>
-                            </div>
+                                <div class="form-group col-md-6">
+                                    <label> Total </label>
+                                    <input type="text" class="form-control" value="{{ "R$ ".number_format($total - $comanda->desconto, 2, ',','.')}}" disabled>
+                                </div>
                             @else
-                            <div class="form-group col-md-6">
-                                <label> Total </label>
-                                <input type="text" class="form-control" value="R$ {{ $total }}" disabled>
-                            </div>
+                                <div class="form-group col-md-6">
+                                    <label> Total </label>
+                                    <input type="text" class="form-control" value="R$ {{ $total }}" disabled>
+                                </div>
                             @endif
 
                             <div class="form-group col-md-6">
@@ -169,7 +175,7 @@
 
                             <div class="form-group col-md-6">
                                 <label> Total </label>
-                                <input type="text" name="pagamento_parcial" class="form-control" value="" required>
+                                <input type="number" name="pagamento_parcial" class="form-control"  id="pagamento_parcial" required>
                             </div>
 
                             <div class="form-group col-md-6">
